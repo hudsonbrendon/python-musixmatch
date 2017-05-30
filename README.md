@@ -1,8 +1,8 @@
-# Python musixmatch
+# Python Musixmatch
 
 Simple integrate of API musixmatch.com with python
 
-[![Build Status](https://travis-ci.org/hudsonbrendon/pyeventick.svg?branch=master)](https://travis-ci.org/hudsonbrendon/pyeventick)
+[![Build Status](https://travis-ci.org/hudsonbrendon/python-musixmatch.svg?branch=master)](https://travis-ci.org/hudsonbrendon/python-musixmatch)
 [![Github Issues](http://img.shields.io/github/issues/hudsonbrendon/python-musixmatch.svg?style=flat)](https://github.com/hudsonbrendon/python-musixmatch/issues?sort=updated&state=open)
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 
