@@ -93,12 +93,29 @@ Parameters:
 >>> musixmatch.track_search(q_artist='twentyonepilots', page_size=10, page=1, s_track_rating='desc')
 ```
 
+## Track Get
+
+Get a track info from our database: title, artist, instrumental flag and cover art.
+
+Parameters:
+
+track_id - The musiXmatch track id.
+commontrack_id - The musiXmatch commontrack id.
+track_isrc - A valid ISRC identifier.
+track_mbid - The musicbrainz recording id.
+format - Decide the output type json or xml (default json).
+
+
+```python
+>>> musixmatch.track_get(15445219)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
 - [x] [Chart Track Get](https://developer.musixmatch.com/documentation/api-reference/track-chart-get)
 - [x] [Track Search](https://developer.musixmatch.com/documentation/api-reference/track-search)
-- [ ] [Track Get](https://developer.musixmatch.com/documentation/api-reference/track-get)
+- [x] [Track Get](https://developer.musixmatch.com/documentation/api-reference/track-get)
 - [ ] [Track Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get)
 - [ ] [Track Snippet Get](https://developer.musixmatch.com/documentation/api-reference/track-snippet-get)
 - [ ] [Track Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/track-subtitle-get)
