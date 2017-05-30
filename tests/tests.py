@@ -12,15 +12,16 @@ class TestMusixmatch(unittest.TestCase):
 
     def test_get_url(self):
         self.assertEqual(self.musixmatch
-                         .get_url('chart.artists.get?'
-                                  'page=1&page_size=1&country=us&format=json'),
+                         ._get_url('chart.artists.get?'
+                                   'page=1&page_size=1&country=us'
+                                   '&format=json'),
                          self.url + 'chart.artists.get?'
                                     'page=1&page_size=1'
                                     '&country=us&format=json&apikey={}'
                                     .format(os.environ.get('APIKEY')))
 
     def test_apikey(self):
-        self.assertEqual(self.musixmatch.apikey, os.environ.get('APIKEY'))
+        self.assertEqual(self.musixmatch._apikey, os.environ.get('APIKEY'))
 
     def test_chart_artists(self):
         self.assertEqual(self.musixmatch.chart_artists(1, 1)
