@@ -42,6 +42,13 @@ class TestMusixmatch(unittest.TestCase):
                          ['track']['track_name'],
                          'Despacito - Remix')
 
+    def test_track_search(self):
+        self.assertEqual(self.musixmatch.track_search(q_artist='justinbieber',
+                                                      page_size=10, page=1,
+                                                      s_track_rating='desc')
+                                                      ['message']['body']
+                                                      ['track_list'], [])
+
 
 if __name__ == '__main__':
     unittest.main()
