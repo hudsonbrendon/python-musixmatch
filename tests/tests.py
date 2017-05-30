@@ -49,6 +49,14 @@ class TestMusixmatch(unittest.TestCase):
                                                       ['message']['body']
                                                       ['track_list'], [])
 
+    def test_track_get(self):
+        self.assertEqual(self.musixmatch.track_get(15445219)
+                         ['message']['body']['track']['artist_name'],
+                         'Lady Gaga')
+        self.assertEqual(self.musixmatch.track_get(15445219)
+                         ['message']['body']['track']['album_name'],
+                         'The Fame Monster')
+
 
 if __name__ == '__main__':
     unittest.main()
