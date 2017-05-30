@@ -1,6 +1,6 @@
 import unittest
 
-from musixmatch.utils import _set_page_size
+from musixmatch import _set_page_size
 
 
 class TestUtils(unittest.TestCase):

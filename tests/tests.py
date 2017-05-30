@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from musixmatch.musixmatch import Musixmatch
+from musixmatch import Musixmatch
 
 
 class TestMusixmatch(unittest.TestCase):
