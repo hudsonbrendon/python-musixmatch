@@ -30,7 +30,7 @@ All you need to do is [register](https://developer.musixmatch.com/signup) in ord
 With your key in hand, it's time to authenticate, so run:
 
 ```python
->>> from musixmatch.musixmatch import Musixmatch
+>>> from musixmatch import Musixmatch
 
 >>> musixmatch = Musixmatch('<apikey>')
 ```
