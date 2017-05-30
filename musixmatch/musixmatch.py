@@ -7,6 +7,11 @@ from .utils import _set_page_size
 class Musixmatch(object):
 
     def __init__(self, apikey):
+        ''' Define objects of type Musixmatch.
+
+        Parameters:
+        apikey - For get your apikey access: https://developer.musixmatch.com
+        '''
         self.__apikey = apikey
         self.__url = 'http://api.musixmatch.com/ws/1.1/'
 
@@ -22,9 +27,16 @@ class Musixmatch(object):
         return data
 
     def chart_artists(self, page, page_size, country='us', _format='json'):
-        """This api provides you the list
+        ''' This api provides you the list
         of the top artists of a given country.
-        """
+
+        Parameters:
+
+        country - A valid country code (default US).
+        page - Define the page number for paginated results.
+        page_size - Define the page size for paginated results (range 1 - 100).
+        format - Decide the output type json or xml (default json).
+        '''
         data = self._request(self._get_url('chart.artists.get?'
                                            'page={}&page_size={}'
                                            '&country={}&format={}'
