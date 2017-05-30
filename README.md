@@ -66,8 +66,9 @@ Parameters:
 >>> musixmatch.chart_tracks_get(1, 1)
 ```
 
-```
+
 # Features
+
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
 - [x] [Chart Track Get](https://developer.musixmatch.com/documentation/api-reference/track-chart-get)
 - [ ] [Track Search](https://developer.musixmatch.com/documentation/api-reference/track-search)
