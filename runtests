@@ -1,0 +1,4 @@
+#!/bin/bash
+
+python tests/tests.py
+python tests/test_utils.py
