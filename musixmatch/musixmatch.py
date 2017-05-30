@@ -32,9 +32,9 @@ class Musixmatch(object):
 
         Parameters:
 
-        country - A valid country code (default US).
         page - Define the page number for paginated results.
         page_size - Define the page size for paginated results (range 1 - 100).
+        country - A valid country code (default US).
         format - Decide the output type json or xml (default json).
         '''
         data = self._request(self._get_url('chart.artists.get?'
@@ -47,6 +47,17 @@ class Musixmatch(object):
 
     def chart_tracks_get(self, page, page_size, f_has_lyrics,
                          country='us', _format='json'):
+        ''' This api provides you the list
+        of the top songs of a given country.
+
+        Parameters:
+
+        page - Define the page number for paginated results.
+        page_size - Define the page size for paginated results (range 1 - 100).
+        f_has_lyrics - When set, filter only contents with lyrics.
+        country - A valid country code (default US).
+        format - Decide the output type json or xml (default json).
+        '''
         data = self._request(self._get_url('chart.tracks.get?'
                                            'page={}&page_size={}'
                                            '&country={}&format={}'

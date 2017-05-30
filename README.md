@@ -18,9 +18,16 @@ or
 ```bash
 $ python setup.py install
 ```
+
+# Authentication
+
+Register for an API key:
+
+All you need to do is [register](https://developer.musixmatch.com/signup) in order to get your API key, a mandatory parameter for most of our API calls. It’s your personal identifier and should be kept secret.
+
 # Usage
 
-To access the API you'll need to login, use:
+With your key in hand, it's time to authenticate, so run:
 
 ```python
 >>> from musixmatch.musixmatch import Musixmatch
@@ -28,63 +35,41 @@ To access the API you'll need to login, use:
 >>> musixmatch = Musixmatch('<apikey>')
 ```
 
-```python
->>> musixmatch.chart_artists(1, 1)
-```
+## Chart Artists Get
+
+This api provides you the list of the top artists of a given country.
+
+Parameters:
+
+- country - A valid country code (default US).
+- page - Define the page number for paginated results.
+- page_size - Define the page size for paginated results (range 1 - 100).
+- format - Decide the output type json or xml (default json).
 
 ```python
-{'message': {
-    'header': {
-        'status_code': 200,
-        'execute_time': 0.011009931564331
-    }, 'body': {
-            'artist_list': [{
-                'artist': {
-                    'artist_country': 'GB',
-                    'artist_credits': {
-                        'artist_list': []
-                    },
-                    'artist_share_url': 'https://www.musixmatch.com/artist/Ed-Sheeran',
-                    'artist_name_translation_list': [],
-                    'artist_edit_url': 'https://www.musixmatch.com/artist/Ed-Sheeran?utm_source=application&utm_campaign=api&utm_medium=Code+Rocket',
-                    'artist_mbid': 'b8a7c51f-362c-4dcb-a259-bc6e0095f0a6',
-                    'artist_name': 'Ed Sheeran',
-                    'artist_alias_list': [{
-                        'artist_alias': 'エド シーラン'
-                    },
-                    {'artist_alias': 'ai de xi lan'},
-                    {'artist_alias': 'Ed shiran'}],
-                    'updated_time': '2017T22:35:37Z',
-                    'artist_comment': '',
-                    'artist_vanity_id': 'Ed-Sheeran',
-                    'primary_genres': {
-                        'music_genre_list': [{
-                            'music_genre': {
-                                'music_genre_id': 10,
-                                'music_genre_parent_id': 34,
-                                'music_genre_name': 'Singer/Songwriter',
-                                'music_genre_vanity': 'Singer-Songwriter',
-                                'music_genre_name_extended': 'Singer/Songwriter'
-                            }
-                        }]
-                    },
-                    'restricted': 0,
-                    'managed': 0,
-                    'artist_rating': 100,
-                    'artist_twitter_url': 'https://twitter.com/edsheeran',
-                    'artist_id': 33111847,
-                    'secondary_genres': {
-                        'music_genre_list': []
-                    }
-                }
-            }]
-        }
-    }
-}
+>>> musixmatch.chart_artists_get(1, 1)
+```
+
+## Chart Tracks Get
+
+This api provides you the list of the top songs of a given country.
+
+Parameters:
+
+- page - Define the page number for paginated results.
+- page_size - Define the page size for paginated results (range 1 - 100).
+- f_has_lyrics - When set, filter only contents with lyrics.
+- country - A valid country code (default US).
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.chart_tracks_get(1, 1)
+```
+
 ```
 # Features
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
-- [ ] [Chart Track Get](https://developer.musixmatch.com/documentation/api-reference/track-chart-get)
+- [x] [Chart Track Get](https://developer.musixmatch.com/documentation/api-reference/track-chart-get)
 - [ ] [Track Search](https://developer.musixmatch.com/documentation/api-reference/track-search)
 - [ ] [Track Get](https://developer.musixmatch.com/documentation/api-reference/track-get)
 - [ ] [Track Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get)
