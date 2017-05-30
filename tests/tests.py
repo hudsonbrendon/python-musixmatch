@@ -32,6 +32,16 @@ class TestMusixmatch(unittest.TestCase):
                          ['artist']['artist_mbid'],
                          'b8a7c51f-362c-4dcb-a259-bc6e0095f0a6')
 
+    def test_chart_tracks_get(self):
+        self.assertEqual(self.musixmatch.chart_tracks_get(1, 1, 1)
+                         ['message']['body']['track_list'][0]
+                         ['track']['album_name'],
+                         'Despacito Feat. Justin Bieber (Remix)')
+        self.assertEqual(self.musixmatch.chart_tracks_get(1, 1, 1)
+                         ['message']['body']['track_list'][0]
+                         ['track']['track_name'],
+                         'Despacito - Remix')
+
 
 if __name__ == '__main__':
     unittest.main()

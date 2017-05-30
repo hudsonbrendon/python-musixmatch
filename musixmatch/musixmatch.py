@@ -44,3 +44,15 @@ class Musixmatch(object):
                                                    _set_page_size(page_size),
                                                    country, _format)))
         return data
+
+    def chart_tracks_get(self, page, page_size, f_has_lyrics,
+                         country='us', _format='json'):
+        data = self._request(self._get_url('chart.tracks.get?'
+                                           'page={}&page_size={}'
+                                           '&country={}&format={}'
+                                           '&f_has_lyrics={}'
+                                           .format(page,
+                                                   _set_page_size(page_size),
+                                                   country, _format,
+                                                   f_has_lyrics)))
+        return data
