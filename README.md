@@ -149,16 +149,42 @@ Return the subtitle of a track in LRC or DFXP format. Refer to Wikipedia LRC for
 
 Parameters:
 
-- track_id - The musiXmatch track id
-- track_mbid - The musicbrainz track id
-- subtitle_format - The format of the subtitle (lrc,dfxp,stledu). Default to lrc
-- f_subtitle_length - The desired length of the subtitle (seconds)
-- f_subtitle_length_max_deviation - The maximum deviation allowed from the f_subtitle_length (seconds)
-- format - Decide the output type json or xml (default json)
+- track_id - The musiXmatch track id.
+- track_mbid - The musicbrainz track id.
+- subtitle_format - The format of the subtitle (lrc,dfxp,stledu). Default to lrc.
+- f_subtitle_length - The desired length of the subtitle (seconds).
+- f_subtitle_length_max_deviation - The maximum deviation allowed from the f_subtitle_length (seconds).
+- format - Decide the output type json or xml (default json).
 
 
 ```python
 >>> musixmatch.track_subtitle_get(14201829)
+```
+
+## Track Richsync Get
+
+Get the Rich sync for a track.
+
+A rich sync is an enhanced version of the standard sync which allows:
+
+- position offset by single characther.
+- endless formatting options at single char level.
+- multiple concurrent voices.
+- multiple scrolling direction.
+
+Parameters:
+
+Parameters:
+
+- track_id - The musiXmatch track id.
+- f_sync_length - The desired length of the sync (seconds).
+- f_sync_length_max_deviation - The maximum deviation allowed.
+- from the f_sync_length (seconds).
+- format - Decide the output type json or xml (default json).
+
+
+```python
+>>> musixmatch.track_richsync_get(14201829)
 ```
 
 # Features
@@ -170,7 +196,7 @@ Parameters:
 - [x] [Track Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get)
 - [x] [Track Snippet Get](https://developer.musixmatch.com/documentation/api-reference/track-snippet-get)
 - [x] [Track Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/track-subtitle-get)
-- [ ] [Track Richsync Get](https://developer.musixmatch.com/documentation/api-reference/track-richsync-get)
+- [x] [Track Richsync Get](https://developer.musixmatch.com/documentation/api-reference/track-richsync-get)
 - [ ] [Track Lyrics Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-post)
 - [ ] [Track Lyrics Feedback Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-feedback-post)
 - [ ] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)

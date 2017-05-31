@@ -175,14 +175,14 @@ class Musixmatch(object):
 
            Parameters:
 
-           track_id - The musiXmatch track id
-           track_mbid - The musicbrainz track id
+           track_id - The musiXmatch track id.
+           track_mbid - The musicbrainz track id.
            subtitle_format - The format of the subtitle (lrc,dfxp,stledu).
-           Default to lrc
-           f_subtitle_length - The desired length of the subtitle (seconds)
-           f_subtitle_length_max_deviation - The maximum deviation allowed
-           from the f_subtitle_length (seconds)
-           format - Decide the output type json or xml (default json)
+           Default to lrc.
+           f_subtitle_length - The desired length of the subtitle (seconds).
+           f_subtitle_length_max_deviation - The maximum deviation allowed.
+           from the f_subtitle_length (seconds).
+           format - Decide the output type json or xml (default json).
         '''
         data = self._request(self._get_url('track.subtitle.get?'
                                            'track_id={}&track_mbid={}'
@@ -195,5 +195,32 @@ class Musixmatch(object):
                                                    subtitle_format,
                                                    f_subtitle_length,
                                                    f_subtitle_length_max_deviation,
+                                                   _format)))
+        return data
+
+    def track_richsync_get(self, track_id, f_sync_length=None,
+                           f_sync_length_max_deviation=None, _format='json'):
+        '''Get the Rich sync for a track.
+
+           A rich sync is an enhanced version of the standard sync which allows:
+
+           - position offset by single characther.
+           - endless formatting options at single char level.
+           - multiple concurrent voices.
+           - multiple scrolling direction.
+
+           Parameters:
+
+           track_id - The musiXmatch track id.
+           f_sync_length - The desired length of the sync (seconds).
+           f_sync_length_max_deviation - The maximum deviation allowed.
+           from the f_sync_length (seconds).
+        '''
+        data = self._request(self._get_url('track.richsync.get?'
+                                           'track_id={}&f_sync_length={}'
+                                           '&f_sync_length_max_deviation={}'
+                                           '&format={}'
+                                           .format(track_id, f_sync_length,
+                                                   f_sync_length_max_deviation,
                                                    _format)))
         return data
