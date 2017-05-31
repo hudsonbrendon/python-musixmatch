@@ -57,6 +57,17 @@ class TestMusixmatch(unittest.TestCase):
                          ['message']['body']['track']['album_name'],
                          'The Fame Monster')
 
+    def test_track_lyrics_get(self):
+        self.assertEqual(self.musixmatch.track_lyrics_get(15953433)
+                         ['message']['body']['lyrics']['lyrics_language'],
+                         'en')
+        self.assertEqual(self.musixmatch.track_lyrics_get(15953433)
+                         ['message']['body']['lyrics']
+                         ['lyrics_language_description'], 'English')
+        self.assertEqual(self.musixmatch.track_lyrics_get(15953433)
+                         ['message']['body']['lyrics']
+                         ['lyrics_id'], 15912802)
+
 
 if __name__ == '__main__':
     unittest.main()

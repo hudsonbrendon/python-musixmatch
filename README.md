@@ -110,13 +110,28 @@ Parameters:
 >>> musixmatch.track_get(15445219)
 ```
 
+## Track Lyrics Get
+
+Get the lyrics of a track.
+
+Parameters:
+
+- track_id - The musiXmatch track id.
+- track_mbid - The musicbrainz recording id.
+- format - Decide the output type json or xml (default json).
+
+
+```python
+>>> musixmatch.track_lyrics_get(15953433)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
 - [x] [Chart Track Get](https://developer.musixmatch.com/documentation/api-reference/track-chart-get)
 - [x] [Track Search](https://developer.musixmatch.com/documentation/api-reference/track-search)
 - [x] [Track Get](https://developer.musixmatch.com/documentation/api-reference/track-get)
-- [ ] [Track Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get)
+- [x] [Track Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get)
 - [ ] [Track Snippet Get](https://developer.musixmatch.com/documentation/api-reference/track-snippet-get)
 - [ ] [Track Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/track-subtitle-get)
 - [ ] [Track Richsync Get](https://developer.musixmatch.com/documentation/api-reference/track-richsync-get)

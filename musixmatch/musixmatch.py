@@ -129,3 +129,21 @@ class Musixmatch(object):
                                                    track_isrc, track_mbid,
                                                    _format)))
         return data
+
+    def track_lyrics_get(self, track_id, track_mbid=None, _format='json'):
+        ''' Get the lyrics of a track.
+
+        Parameters:
+
+        track_id - The musiXmatch track id.
+        track_mbid - The musicbrainz track id.
+        format - Decide the output type json or xml (default json).
+
+
+        '''
+        data = self._request(self._get_url('track.lyrics.get?'
+                                           'track_id={}&track_mbid={}'
+                                           '&format={}'
+                                           .format(track_id,
+                                                   track_mbid, _format)))
+        return data
