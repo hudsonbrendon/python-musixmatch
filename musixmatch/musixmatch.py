@@ -147,3 +147,20 @@ class Musixmatch(object):
                                            .format(track_id,
                                                    track_mbid, _format)))
         return data
+
+    def track_snippet_get(self, track_id, _format='json'):
+        ''' Get the snippet for a given track.
+
+        A lyrics snippet is a very short representation of a song lyrics.
+        It’s usually twenty to a hundred characters long and it’s calculated
+        extracting a sequence of words from the lyrics.
+
+        Parameters:
+
+        track_id - The musiXmatch track id
+        format - Decide the output type json or xml (default json).
+        '''
+        data = self._request(self._get_url('track.snippet.get?'
+                                           'track_id={}&format={}'
+                                           .format(track_id, _format)))
+        return data

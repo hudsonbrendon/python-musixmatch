@@ -68,6 +68,14 @@ class TestMusixmatch(unittest.TestCase):
                          ['message']['body']['lyrics']
                          ['lyrics_id'], 15912802)
 
+    def test_track_snippet_get(self):
+        self.assertEqual(self.musixmatch.track_snippet_get(16860631)
+                         ['message']['body']['snippet']['snippet_id'],
+                         16229519)
+        self.assertEqual(self.musixmatch.track_snippet_get(16860631)
+                         ['message']['body']['snippet']['snippet_body'],
+                         "You shoot me down, but I won't fall")
+
 
 if __name__ == '__main__':
     unittest.main()

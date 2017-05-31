@@ -125,6 +125,22 @@ Parameters:
 >>> musixmatch.track_lyrics_get(15953433)
 ```
 
+## Track Snippet Get
+
+Get the snippet for a given track.
+
+A lyrics snippet is a very short representation of a song lyrics. It’s usually twenty to a hundred characters long and it’s calculated extracting a sequence of words from the lyrics.
+
+Parameters:
+
+- track_id - The musiXmatch track id.
+- format - Decide the output type json or xml (default json).
+
+
+```python
+>>> musixmatch.track_snippet_get(16860631)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -132,7 +148,7 @@ Parameters:
 - [x] [Track Search](https://developer.musixmatch.com/documentation/api-reference/track-search)
 - [x] [Track Get](https://developer.musixmatch.com/documentation/api-reference/track-get)
 - [x] [Track Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get)
-- [ ] [Track Snippet Get](https://developer.musixmatch.com/documentation/api-reference/track-snippet-get)
+- [x] [Track Snippet Get](https://developer.musixmatch.com/documentation/api-reference/track-snippet-get)
 - [ ] [Track Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/track-subtitle-get)
 - [ ] [Track Richsync Get](https://developer.musixmatch.com/documentation/api-reference/track-richsync-get)
 - [ ] [Track Lyrics Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-post)
