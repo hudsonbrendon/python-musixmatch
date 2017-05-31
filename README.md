@@ -141,6 +141,26 @@ Parameters:
 >>> musixmatch.track_snippet_get(16860631)
 ```
 
+## Track Snippet Get
+
+Retreive the subtitle of a track.
+
+Return the subtitle of a track in LRC or DFXP format. Refer to Wikipedia LRC format page or DFXP format on W3c for format specifications.
+
+Parameters:
+
+- track_id - The musiXmatch track id
+- track_mbid - The musicbrainz track id
+- subtitle_format - The format of the subtitle (lrc,dfxp,stledu). Default to lrc
+- f_subtitle_length - The desired length of the subtitle (seconds)
+- f_subtitle_length_max_deviation - The maximum deviation allowed from the f_subtitle_length (seconds)
+- format - Decide the output type json or xml (default json)
+
+
+```python
+>>> musixmatch.track_subtitle_get(14201829)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -149,7 +169,7 @@ Parameters:
 - [x] [Track Get](https://developer.musixmatch.com/documentation/api-reference/track-get)
 - [x] [Track Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get)
 - [x] [Track Snippet Get](https://developer.musixmatch.com/documentation/api-reference/track-snippet-get)
-- [ ] [Track Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/track-subtitle-get)
+- [x] [Track Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/track-subtitle-get)
 - [ ] [Track Richsync Get](https://developer.musixmatch.com/documentation/api-reference/track-richsync-get)
 - [ ] [Track Lyrics Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-post)
 - [ ] [Track Lyrics Feedback Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-feedback-post)
