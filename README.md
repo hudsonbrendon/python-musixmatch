@@ -174,8 +174,6 @@ A rich sync is an enhanced version of the standard sync which allows:
 
 Parameters:
 
-Parameters:
-
 - track_id - The musiXmatch track id.
 - f_sync_length - The desired length of the sync (seconds).
 - f_sync_length_max_deviation - The maximum deviation allowed.
