@@ -93,6 +93,10 @@ class TestMusixmatch(unittest.TestCase):
         self.assertEqual(self.musixmatch.track_lyrics_post(1471157, 'test')
                          ['message']['body'], '')
 
+    def test_track_lyrics_feedback_post(self):
+        self.assertEqual(self.musixmatch.track_lyrics_post(1471157, 4193713,
+                         'wrong_verses')['message']['body'], '')
+
 
 if __name__ == '__main__':
     unittest.main()

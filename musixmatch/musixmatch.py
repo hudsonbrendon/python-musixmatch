@@ -252,3 +252,34 @@ class Musixmatch(object):
                                            .format(track_id, lyrics_body,
                                                    _format)))
         return data
+
+    def track_lyrics_feedback_post(self, track_id, lyrics_id,
+                                   feedback, _format='json'):
+        ''' This API method provides you the opportunity to help
+            us improving our catalogue.
+
+            We aim to provide you with the best quality service imaginable,
+            so we are especially interested in your detailed feedback to help
+            us to continually improve it.
+
+            Please take all the necessary precautions to avoid users or
+            automatic software to use your website/app to use this commands,
+            a captcha solution like http://www.google.com/recaptcha or an
+            equivalent one has to be implemented in every user interaction that
+            ends in a POST operation on the musixmatch api.
+
+            Parameters:
+
+            lyrics_id - The musiXmatch lyrics id.
+            track_id - The musiXmatch track id.
+            feedback - The feedback to be reported, possible values are:
+            wrong_lyrics, wrong_attribution, bad_characters,
+            lines_too_long, wrong_verses, wrong_formatting
+            format - Decide the output type json or xml (default json)
+        '''
+        data = self._request(self._get_url('track.lyrics.feedback.post?'
+                                           'track_id={}&lyrics_id={}'
+                                           '&feedback={}&format={}'
+                                           .format(track_id, lyrics_id,
+                                                   feedback, _format)))
+        return data
