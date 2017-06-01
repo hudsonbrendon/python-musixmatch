@@ -87,6 +87,12 @@ class TestMusixmatch(unittest.TestCase):
                          ['message']['body']['richsync']
                          ['richsync_length'], 230)
 
+    def test_track_lyrics_post(self):
+        self.assertEqual(self.musixmatch.track_lyrics_post(1471157, 'test')
+                         ['message']['header']['status_code'], 200)
+        self.assertEqual(self.musixmatch.track_lyrics_post(1471157, 'test')
+                         ['message']['body'], '')
+
 
 if __name__ == '__main__':
     unittest.main()

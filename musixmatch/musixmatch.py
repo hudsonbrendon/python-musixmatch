@@ -202,7 +202,8 @@ class Musixmatch(object):
                            f_sync_length_max_deviation=None, _format='json'):
         '''Get the Rich sync for a track.
 
-           A rich sync is an enhanced version of the standard sync which allows:
+           A rich sync is an enhanced version of the
+           standard sync which allows:
 
            - position offset by single characther.
            - endless formatting options at single char level.
@@ -222,5 +223,32 @@ class Musixmatch(object):
                                            '&format={}'
                                            .format(track_id, f_sync_length,
                                                    f_sync_length_max_deviation,
+                                                   _format)))
+        return data
+
+    def track_lyrics_post(self, track_id,
+                          lyrics_body, _format='json'):
+        ''' Submit a lyrics to our database.
+
+            It may happen we don’t have the lyrics for a song,
+            you can ask your users to help us sending the missing
+            lyrics. We’ll validate every submission and in case, make
+            it available through our api.
+
+            Please take all the necessary precautions to avoid users
+            or automatic software to use your website/app to use this
+            commands, a captcha solution like http://www.google.com/recaptcha
+            or an equivalent one has to be implemented in every user
+            interaction that ends in a POST operation on the musixmatch api.
+
+            Parameters:
+
+            track_id - A valid country code (default US)
+            lyrics_body - The lyrics
+            formatDecide the output type json or xml (default json)
+        '''
+        data = self._request(self._get_url('track.lyrics.post?track_id={}'
+                                           '&lyrics_body={}&format={}'
+                                           .format(track_id, lyrics_body,
                                                    _format)))
         return data

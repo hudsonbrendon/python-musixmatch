@@ -187,6 +187,24 @@ Parameters:
 >>> musixmatch.track_richsync_get(14201829)
 ```
 
+## Track Lyrics Post
+
+Submit a lyrics to our database.
+
+It may happen we don’t have the lyrics for a song, you can ask your users to help us sending the missing lyrics. We’ll validate every submission and in case, make it available through our api.
+
+Please take all the necessary precautions to avoid users or automatic software to use your website/app to use this commands, a captcha solution like http://www.google.com/recaptcha or an equivalent one has to be implemented in every user interaction that ends in a POST operation on the musixmatch api.
+
+Parameters:
+
+- track_i - dA valid country code (default US).
+- lyrics_body - The lyrics.
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.track_lyrics_post(1471157, 'test')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -197,7 +215,7 @@ Parameters:
 - [x] [Track Snippet Get](https://developer.musixmatch.com/documentation/api-reference/track-snippet-get)
 - [x] [Track Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/track-subtitle-get)
 - [x] [Track Richsync Get](https://developer.musixmatch.com/documentation/api-reference/track-richsync-get)
-- [ ] [Track Lyrics Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-post)
+- [x] [Track Lyrics Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-post)
 - [ ] [Track Lyrics Feedback Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-feedback-post)
 - [ ] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
 - [ ] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
