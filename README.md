@@ -273,7 +273,7 @@ Parameters:
 - [x] [Track Lyrics Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-post)
 - [x] [Track Lyrics Feedback Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-feedback-post)
 - [x] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
-- [ ] [Matcher Track Get](https://developer.musixmatch.com/documentation/api-reference/matcher-track-get)
+- [x] [Matcher Track Get](https://developer.musixmatch.com/documentation/api-reference/matcher-track-get)
 - [ ] [Matcher Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/matcher-subtitle-get)
 - [ ] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)
 - [ ] [Artist Search](https://developer.musixmatch.com/documentation/api-reference/artist-search)
