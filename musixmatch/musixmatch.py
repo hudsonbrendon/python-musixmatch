@@ -300,3 +300,27 @@ class Musixmatch(object):
                                            .format(q_track, q_artist,
                                                    _format)))
         return data
+
+    def matcher_track_get(self, q_track, q_artist, _format='json'):
+        ''' Match your song against our database.
+
+            In some cases you already have some informations
+            about the track title, artist name, album etc.
+
+            A possible strategy to get the corresponding lyrics could be:
+            - search our catalogue with a perfect match,
+            - maybe try using the fuzzy search,
+            - maybe try again using artist aliases, and so on.
+
+            The matcher.track.get method does all the job for you in
+            a single call. This way you dont’t need to worry about the
+            details, and you’ll get instant benefits for your application
+            without changing a row in your code, while we take care of
+            improving the implementation behind. Cool, uh?
+        '''
+        data = self._request(self._get_url('matcher.track.get?'
+                                           'q_track={}&q_artist={}'
+                                           '&format={}'
+                                           .format(q_track, q_artist,
+                                                   _format)))
+        return data

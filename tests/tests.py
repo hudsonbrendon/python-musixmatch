@@ -80,12 +80,12 @@ class TestMusixmatch(unittest.TestCase):
         self.assertEqual(self.musixmatch.track_subtitle_get(14201829)
                          ['message']['body'], '')
 
-    # def test_track_richsync_get(self):
-    #     self.assertEqual(self.musixmatch.track_richsync_get(114837357)
-    #                      ['message']['body']['richsync']['richsync_id'], 6)
-    #     self.assertEqual(self.musixmatch.track_richsync_get(114837357)
-    #                      ['message']['body']['richsync']
-    #                      ['richsync_length'], 230)
+    def test_track_richsync_get(self):
+        self.assertEqual(self.musixmatch.track_richsync_get(114837357)
+                         ['message']['body']['richsync']['richsync_id'], 6)
+        self.assertEqual(self.musixmatch.track_richsync_get(114837357)
+                         ['message']['body']['richsync']
+                         ['richsync_length'], 230)
 
     def test_track_lyrics_post(self):
         self.assertEqual(self.musixmatch.track_lyrics_post(1471157, 'test')
@@ -106,6 +106,20 @@ class TestMusixmatch(unittest.TestCase):
                          .matcher_lyrics_get('Sexy and I know it', 'LMFAO')
                          ['message']['body']['lyrics']
                          ['lyrics_language'], 'en')
+
+    def test_matcher_track_get(self):
+        self.assertEqual(self.musixmatch
+                         .matcher_track_get('Lose Yourself (soundtrack)',
+                                            'Eminem')['message']['body']
+                                                     ['track']['track_name'],
+                                                     'Lose Yourself - '
+                                                     'Soundtrack Version'
+                                                     ' (Explicit)')
+        self.assertEqual(self.musixmatch
+                         .matcher_track_get('Lose Yourself (soundtrack)',
+                                            'Eminem')['message']['body']
+                                                     ['track']['album_name'],
+                                                     'Curtain Call')
 
 
 if __name__ == '__main__':

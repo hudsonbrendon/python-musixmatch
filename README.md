@@ -238,6 +238,28 @@ Parameters:
 >>> musixmatch.matcher_lyrics_get('Sexy and I know it', 'LMFAO')
 ```
 
+## Matcher Track Get
+
+Match your song against our database.
+
+In some cases you already have some informations about the track title, artist name, album etc.
+A possible strategy to get the corresponding lyrics could be:
+- search our catalogue with a perfect match,
+- maybe try using the fuzzy search,
+- maybe try again using artist aliases, and so on.
+
+The matcher.track.get method does all the job for you in a single call. This way you dont’t need to worry about the details, and you’ll get instant benefits for your application without changing a row in your code, while we take care of improving the implementation behind. Cool, uh?
+
+Parameters:
+
+- q_track - The song title.
+- q_artist - The song artist.
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.matcher_track_get('Lose Yourself (soundtrack)', 'Eminem')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
