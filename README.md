@@ -260,6 +260,25 @@ Parameters:
 >>> musixmatch.matcher_track_get('Lose Yourself (soundtrack)', 'Eminem')
 ```
 
+## Matcher Subtitle Get
+
+You can use the f_subtitle_length_max_deviation to fetch subtitles within a given duration range.
+
+Parameters:
+
+- q_track - The song title
+- q_artist - The song artist
+- f_subtitle_length - Filter by subtitle length in seconds
+- f_subtitle_length_max_deviation - Max deviation for a subtitle length in seconds
+- track_isrc - If you have an available isrc id in your catalogue you can query using this id only (optional)
+- format - Decide the output type json or xml (default json)
+
+Note: This method requires a commercial plan.
+
+```python
+>>> musixmatch.matcher_subtitle_get('Sexy and I know it', 'LMFAO', 200, 3)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -274,7 +293,7 @@ Parameters:
 - [x] [Track Lyrics Feedback Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-feedback-post)
 - [x] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
 - [x] [Matcher Track Get](https://developer.musixmatch.com/documentation/api-reference/matcher-track-get)
-- [ ] [Matcher Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/matcher-subtitle-get)
+- [x] [Matcher Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/matcher-subtitle-get)
 - [ ] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)
 - [ ] [Artist Search](https://developer.musixmatch.com/documentation/api-reference/artist-search)
 - [ ] [Artist Albums Get](https://developer.musixmatch.com/documentation/api-reference/artist-albums-get)
@@ -285,9 +304,11 @@ Parameters:
 - [ ] [Catalogue Dump Get](https://developer.musixmatch.com/documentation/api-reference/catalogue-dump-get)
 
 # Dependencies
+
 - Python 3.5
 - [Pipenv](https://github.com/kennethreitz/pipenv)
 - [requests](http://docs.python-requests.org/en/latest/)
 
 # License
+
 [MIT](http://en.wikipedia.org/wiki/MIT_License)

@@ -324,3 +324,35 @@ class Musixmatch(object):
                                            .format(q_track, q_artist,
                                                    _format)))
         return data
+
+    def matcher_subtitle_get(self, q_track, q_artist, f_subtitle_length,
+                             f_subtitle_length_max_deviation, track_isrc=None,
+                             _format='json'):
+        ''' Get the subtitles for a song given his title,artist and duration.
+
+            You can use the f_subtitle_length_max_deviation to fetch subtitles
+            within a given duration range.
+
+            Parameters:
+
+            q_track - The song title.
+            q_artist - The song artist.
+            f_subtitle_length - Filter by subtitle length in seconds.
+            f_subtitle_length_max_deviation - Max deviation for a subtitle
+            length in seconds.
+            track_isrc - If you have an available isrc id in your catalogue
+            you can query using this id only (optional).
+            format - Decide the output type json or xml (default json).
+
+            Note: This method requires a commercial plan.
+        '''
+        data = self._request(self._get_url('matcher.subtitle.get?q_track={}'
+                                           '&q_artist={}&f_subtitle_length={}'
+                                           '&f_subtitle_length_max_deviation={}'
+                                           '&track_isrc={}&format={}'
+                                           .format(q_track, q_artist,
+                                                   f_subtitle_length,
+                                                   f_subtitle_length_max_deviation,
+                                                   track_isrc,
+                                                   _format)))
+        return data

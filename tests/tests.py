@@ -121,6 +121,12 @@ class TestMusixmatch(unittest.TestCase):
                                                      ['track']['album_name'],
                                                      'Curtain Call')
 
+    def test_matcher_subtitle_get(self):
+        self.assertEqual(self.musixmatch
+                         .matcher_subtitle_get('Sexy and I know it',
+                                               'LMFAO', 200, 3)
+                                               ['message']['body'], '')
+
 
 if __name__ == '__main__':
     unittest.main()
