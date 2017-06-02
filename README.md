@@ -279,6 +279,20 @@ Note: This method requires a commercial plan.
 >>> musixmatch.matcher_subtitle_get('Sexy and I know it', 'LMFAO', 200, 3)
 ```
 
+## Artist Get
+
+Get the artist data from our database.
+
+Parameters:
+
+- artist_id - Musixmatch artist id
+- artist_mbid - Musicbrainz artist id
+- format - Decide the output type json or xml (default json)
+
+```python
+>>> musixmatch.artist_get(118)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -294,7 +308,7 @@ Note: This method requires a commercial plan.
 - [x] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
 - [x] [Matcher Track Get](https://developer.musixmatch.com/documentation/api-reference/matcher-track-get)
 - [x] [Matcher Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/matcher-subtitle-get)
-- [ ] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)
+- [x] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)
 - [ ] [Artist Search](https://developer.musixmatch.com/documentation/api-reference/artist-search)
 - [ ] [Artist Albums Get](https://developer.musixmatch.com/documentation/api-reference/artist-albums-get)
 - [ ] [Artist Related Get](https://developer.musixmatch.com/documentation/api-reference/artist-related-get)

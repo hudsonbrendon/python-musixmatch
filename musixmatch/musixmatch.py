@@ -356,3 +356,18 @@ class Musixmatch(object):
                                                    track_isrc,
                                                    _format)))
         return data
+
+    def artist_get(self, artist_id, artist_mbid=None, _format='json'):
+        ''' Get the artist data from our database.
+
+            Parameters:
+
+            artist_id - Musixmatch artist id.
+            artist_mbid - Musicbrainz artist id.
+            format - Decide the output type json or xml (default json).
+        '''
+        data = self._request(self._get_url('artist.get?artist_id={}'
+                                           '&artist_mbid={}&format={}'
+                                           .format(artist_id, artist_mbid,
+                                                   _format)))
+        return data

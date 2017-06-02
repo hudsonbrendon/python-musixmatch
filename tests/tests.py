@@ -127,6 +127,13 @@ class TestMusixmatch(unittest.TestCase):
                                                'LMFAO', 200, 3)
                                                ['message']['body'], '')
 
+    def test_artist_get(self):
+        self.assertEqual(self.musixmatch.artist_get(118)
+                         ['message']['body']['artist']['artist_name'], 'Queen')
+        self.assertEqual(self.musixmatch.artist_get(118)
+                         ['message']['body']['artist']['artist_mbid'],
+                         '5eecaf18-02ec-47af-a4f2-7831db373419')
+
 
 if __name__ == '__main__':
     unittest.main()
