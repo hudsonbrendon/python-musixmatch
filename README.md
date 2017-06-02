@@ -223,6 +223,21 @@ Parameters:
 >>> musixmatch.track_lyrics_feedback_post(1471157, 4193713, 'wrong_verses')
 ```
 
+## Matcher Lyrics Get
+
+Get the lyrics for track based on title and artist.
+
+Parameters:
+
+- q_track - The song title
+- q_artist - The song artist
+- track_isrc - If you have an available isrc id in your catalogue you can query using this id only (optional)
+- format - Decide the output type json or xml (default json)
+
+```python
+>>> musixmatch.matcher_lyrics_get('Sexy and I know it', 'LMFAO')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -235,8 +250,7 @@ Parameters:
 - [x] [Track Richsync Get](https://developer.musixmatch.com/documentation/api-reference/track-richsync-get)
 - [x] [Track Lyrics Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-post)
 - [x] [Track Lyrics Feedback Post](https://developer.musixmatch.com/documentation/api-reference/track-lyrics-feedback-post)
-- [ ] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
-- [ ] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
+- [x] [Matcher Lyrics Get](https://developer.musixmatch.com/documentation/api-reference/matcher-lyrics-get)
 - [ ] [Matcher Track Get](https://developer.musixmatch.com/documentation/api-reference/matcher-track-get)
 - [ ] [Matcher Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/matcher-subtitle-get)
 - [ ] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)

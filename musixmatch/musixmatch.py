@@ -283,3 +283,20 @@ class Musixmatch(object):
                                            .format(track_id, lyrics_id,
                                                    feedback, _format)))
         return data
+
+    def matcher_lyrics_get(self, q_track, q_artist, _format='json'):
+        ''' Get the lyrics for track based on title and artist.
+
+            Parameters:
+
+            q_track - The song title
+            q_artist - The song artist
+            track_isrc - If you have an available isrc id in your catalogue
+            you can query using this id only (optional)
+            format - Decide the output type json or xml (default json)
+        '''
+        data = self._request(self._get_url('matcher.lyrics.get?'
+                                           'q_track={}&q_artist={}&format={}'
+                                           .format(q_track, q_artist,
+                                                   _format)))
+        return data

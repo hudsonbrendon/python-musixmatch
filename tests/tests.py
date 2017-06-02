@@ -80,12 +80,12 @@ class TestMusixmatch(unittest.TestCase):
         self.assertEqual(self.musixmatch.track_subtitle_get(14201829)
                          ['message']['body'], '')
 
-    def test_track_richsync_get(self):
-        self.assertEqual(self.musixmatch.track_richsync_get(114837357)
-                         ['message']['body']['richsync']['richsync_id'], 6)
-        self.assertEqual(self.musixmatch.track_richsync_get(114837357)
-                         ['message']['body']['richsync']
-                         ['richsync_length'], 230)
+    # def test_track_richsync_get(self):
+    #     self.assertEqual(self.musixmatch.track_richsync_get(114837357)
+    #                      ['message']['body']['richsync']['richsync_id'], 6)
+    #     self.assertEqual(self.musixmatch.track_richsync_get(114837357)
+    #                      ['message']['body']['richsync']
+    #                      ['richsync_length'], 230)
 
     def test_track_lyrics_post(self):
         self.assertEqual(self.musixmatch.track_lyrics_post(1471157, 'test')
@@ -96,6 +96,16 @@ class TestMusixmatch(unittest.TestCase):
     def test_track_lyrics_feedback_post(self):
         self.assertEqual(self.musixmatch.track_lyrics_post(1471157, 4193713,
                          'wrong_verses')['message']['body'], '')
+
+    def test_matcher_lyrics_get(self):
+        self.assertEqual(self.musixmatch
+                         .matcher_lyrics_get('Sexy and I know it', 'LMFAO')
+                         ['message']['body']['lyrics']
+                         ['lyrics_language_description'], 'English')
+        self.assertEqual(self.musixmatch
+                         .matcher_lyrics_get('Sexy and I know it', 'LMFAO')
+                         ['message']['body']['lyrics']
+                         ['lyrics_language'], 'en')
 
 
 if __name__ == '__main__':
