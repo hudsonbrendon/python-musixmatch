@@ -328,6 +328,22 @@ Parameters:
 >>> musixmatch.artist_albums_get(1039, 1, 1, 1, 'desc')
 ```
 
+## Artist Related Get
+
+Get a list of artists somehow related to a given one.
+
+Parameters:
+
+- artist_id - Musixmatch artist id.
+- artist_mbid - Musicbrainz artist id.
+- page - Define the page number for paginated results.
+- page_size - Define the page size for paginated results (range is 1 to 100).
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.artist_related_get(56, 1, 1)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -346,7 +362,7 @@ Parameters:
 - [x] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)
 - [x] [Artist Search](https://developer.musixmatch.com/documentation/api-reference/artist-search)
 - [x] [Artist Albums Get](https://developer.musixmatch.com/documentation/api-reference/artist-albums-get)
-- [ ] [Artist Related Get](https://developer.musixmatch.com/documentation/api-reference/artist-related-get)
+- [x] [Artist Related Get](https://developer.musixmatch.com/documentation/api-reference/artist-related-get)
 - [ ] [Album Get](https://developer.musixmatch.com/documentation/api-reference/album-get)
 - [ ] [Album Tracks Get](https://developer.musixmatch.com/documentation/api-reference/album-tracks-get)
 - [ ] [Tracking Url Get](https://developer.musixmatch.com/documentation/api-reference/tracking-url-get)

@@ -420,5 +420,29 @@ class Musixmatch(object):
                                            .format(artist_id, artist_mbid,
                                                    g_album_name,
                                                    s_release_date,
-                                                   page, page_size, _format)))
+                                                   page,
+                                                   _set_page_size(page_size),
+                                                   _format)))
+        return data
+
+    def artist_related_get(self, artist_id, page, page_size,
+                           artist_mbid=None, _format='json'):
+        ''' Get a list of artists somehow related to a given one.
+
+            Parameters:
+
+            artist_id - The musiXmatch artist id
+            artist_mbid - The musicbrainz artist id
+            page - Define the page number for paginated results
+            page_size - Define the page size for paginated results
+            (range is 1 to 100).
+            format - Decide the output type json or xml (default json).
+        '''
+        data = self._request(self._get_url('artist.related.get?artist_id={}'
+                                           '&artist_mbid={}&page={}'
+                                           '&page_size={}&format={}'
+                                           .format(artist_id,
+                                                   artist_mbid, page,
+                                                   _set_page_size(page_size),
+                                                   _format)))
         return data
