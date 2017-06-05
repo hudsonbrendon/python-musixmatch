@@ -310,6 +310,24 @@ Parameters:
 >>> musixmatch.artist_search('prodigy', 1, 1, 16439, '4a4ee089-93b1-4470-af9a-6ff575d32704')
 ```
 
+## Artist Album Get
+
+Get the album discography of an artist.
+
+Parameters:
+
+- artist_id - Musixmatch artist id.
+- artist_mbid - Musicbrainz artist id.
+- g_album_name - Group by Album Name.
+- s_release_date - Sort by release date (asc|desc).
+- page - Define the page number for paginated results.
+- page_size - Define the page size for paginated results (range is 1 to 100).
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.artist_albums_get(1039, 1, 1, 1, 'desc')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -327,7 +345,7 @@ Parameters:
 - [x] [Matcher Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/matcher-subtitle-get)
 - [x] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)
 - [x] [Artist Search](https://developer.musixmatch.com/documentation/api-reference/artist-search)
-- [ ] [Artist Albums Get](https://developer.musixmatch.com/documentation/api-reference/artist-albums-get)
+- [x] [Artist Albums Get](https://developer.musixmatch.com/documentation/api-reference/artist-albums-get)
 - [ ] [Artist Related Get](https://developer.musixmatch.com/documentation/api-reference/artist-related-get)
 - [ ] [Album Get](https://developer.musixmatch.com/documentation/api-reference/album-get)
 - [ ] [Album Tracks Get](https://developer.musixmatch.com/documentation/api-reference/album-tracks-get)

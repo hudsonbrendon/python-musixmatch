@@ -144,6 +144,16 @@ class TestMusixmatch(unittest.TestCase):
                          ['message']['body']['artist_list'][0]['artist']
                          ['artist_name'], 'The Prodigy')
 
+    def test_artist_albums_get(self):
+        self.assertEqual(self.musixmatch
+                         .artist_albums_get(1039, 1, 1, 1, 'desc')
+                         ['message']['body']['album_list'][0]['album']
+                         ['album_name'], 'Kaleidoscope')
+        self.assertEqual(self.musixmatch
+                         .artist_albums_get(1039, 1, 1, 1, 'desc')
+                         ['message']['body']['album_list'][0]['album']
+                         ['album_id'], 25660826)
+
 
 if __name__ == '__main__':
     unittest.main()

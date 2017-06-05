@@ -184,18 +184,19 @@ class Musixmatch(object):
            from the f_subtitle_length (seconds).
            format - Decide the output type json or xml (default json).
         '''
-        data = self._request(self._get_url('track.subtitle.get?'
-                                           'track_id={}&track_mbid={}'
-                                           '&subtitle_format={}'
-                                           '&f_subtitle_length={}'
-                                           '&f_subtitle_length_max_deviation={}'
-                                           '&format={}'
-                                           .format(track_id,
-                                                   track_mbid,
-                                                   subtitle_format,
-                                                   f_subtitle_length,
-                                                   f_subtitle_length_max_deviation,
-                                                   _format)))
+        data = self._request(self
+                             ._get_url('track.subtitle.get?'
+                                       'track_id={}&track_mbid={}'
+                                       '&subtitle_format={}'
+                                       '&f_subtitle_length={}'
+                                       '&f_subtitle_length_max_deviation={}'
+                                       '&format={}'
+                                       .format(track_id,
+                                               track_mbid,
+                                               subtitle_format,
+                                               f_subtitle_length,
+                                               f_subtitle_length_max_deviation,
+                                               _format)))
         return data
 
     def track_richsync_get(self, track_id, f_sync_length=None,
@@ -346,15 +347,16 @@ class Musixmatch(object):
 
             Note: This method requires a commercial plan.
         '''
-        data = self._request(self._get_url('matcher.subtitle.get?q_track={}'
-                                           '&q_artist={}&f_subtitle_length={}'
-                                           '&f_subtitle_length_max_deviation={}'
-                                           '&track_isrc={}&format={}'
-                                           .format(q_track, q_artist,
-                                                   f_subtitle_length,
-                                                   f_subtitle_length_max_deviation,
-                                                   track_isrc,
-                                                   _format)))
+        data = self._request(self
+                             ._get_url('matcher.subtitle.get?q_track={}'
+                                       '&q_artist={}&f_subtitle_length={}'
+                                       '&f_subtitle_length_max_deviation={}'
+                                       '&track_isrc={}&format={}'
+                                       .format(q_track, q_artist,
+                                               f_subtitle_length,
+                                               f_subtitle_length_max_deviation,
+                                               track_isrc,
+                                               _format)))
         return data
 
     def artist_get(self, artist_id, artist_mbid=None, _format='json'):
@@ -394,4 +396,29 @@ class Musixmatch(object):
                                                    f_artist_mbid, page,
                                                    _set_page_size(page_size),
                                                    _format)))
+        return data
+
+    def artist_albums_get(self, artist_id, g_album_name, page, page_size,
+                          s_release_date, artist_mbid=None, _format='json'):
+        ''' Get the album discography of an artist.
+
+            Parameters:
+
+            artist_id - Musixmatch artist id.
+            artist_mbid - Musicbrainz artist id.
+            g_album_name - Group by Album Name.
+            s_release_date - Sort by release date (asc|desc).
+            page - Define the page number for paginated results.
+            page_size - Define the page size for paginated results
+            (range is 1 to 100).
+            format - Decide the output type json or xml (default json).
+        '''
+        data = self._request(self._get_url('artist.albums.get?artist_id={}'
+                                           '&artist_mbid={}&g_album_name={}'
+                                           '&s_release_date={}&page={}'
+                                           '&page_size={}&format={}'
+                                           .format(artist_id, artist_mbid,
+                                                   g_album_name,
+                                                   s_release_date,
+                                                   page, page_size, _format)))
         return data
