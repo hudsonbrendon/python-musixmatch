@@ -134,6 +134,16 @@ class TestMusixmatch(unittest.TestCase):
                          ['message']['body']['artist']['artist_mbid'],
                          '5eecaf18-02ec-47af-a4f2-7831db373419')
 
+    def test_artist_search(self):
+        self.assertEqual(self.musixmatch.artist_search('prodigy',
+                         1, 1, 16439, '4a4ee089-93b1-4470-af9a-6ff575d32704')
+                         ['message']['body']['artist_list'][0]['artist']
+                         ['artist_id'], 16439)
+        self.assertEqual(self.musixmatch.artist_search('prodigy',
+                         1, 1, 16439, '4a4ee089-93b1-4470-af9a-6ff575d32704')
+                         ['message']['body']['artist_list'][0]['artist']
+                         ['artist_name'], 'The Prodigy')
+
 
 if __name__ == '__main__':
     unittest.main()

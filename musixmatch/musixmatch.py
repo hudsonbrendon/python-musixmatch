@@ -371,3 +371,27 @@ class Musixmatch(object):
                                            .format(artist_id, artist_mbid,
                                                    _format)))
         return data
+
+    def artist_search(self, q_artist, page, page_size, f_artist_id,
+                      f_artist_mbid,
+                      _format='json'):
+        ''' Search for artists in our database.
+
+            Parameters:
+
+            q_artist - The song artist.
+            f_artist_id - When set, filter by this artist id.
+            f_artist_mbid - When set, filter by this artist musicbrainz id.
+            page - Define the page number for paginated results.
+            page_size - Define the page size for paginated results
+            (Range is 1 to 100).
+            format - Decide the output type json or xml (default json).
+        '''
+        data = self._request(self._get_url('artist.search?q_artist={}'
+                                           '&f_artist_id={}&f_artist_mbid={}'
+                                           '&page={}&page_size={}&format={}'
+                                           .format(q_artist, f_artist_id,
+                                                   f_artist_mbid, page,
+                                                   _set_page_size(page_size),
+                                                   _format)))
+        return data

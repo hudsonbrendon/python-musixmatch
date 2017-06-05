@@ -293,6 +293,23 @@ Parameters:
 >>> musixmatch.artist_get(118)
 ```
 
+## Artist Search
+
+Search for artists in our database.
+
+Parameters:
+
+- q_artist - The song artist.
+- f_artist_id - When set, filter by this artist id.
+- f_artist_mbid - When set, filter by this artist musicbrainz id.
+- page - Define the page number for paginated results.
+- page_size - Define the page size for paginated results (range is 1 to 100).
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.artist_search('prodigy', 1, 1, 16439, '4a4ee089-93b1-4470-af9a-6ff575d32704')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
