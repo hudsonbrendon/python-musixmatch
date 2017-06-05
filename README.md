@@ -357,6 +357,23 @@ Parameters:
 >>> musixmatch.album_get(14250417)
 ```
 
+## Album Tracks Get
+
+This api provides you the list of the songs of an album.
+
+Parameters:
+
+- album_id - Musixmatch album id.
+- album_mbid - Musicbrainz album id.
+- f_has_lyrics - When set, filter only contents with lyrics.
+- page - Define the page number for paginated results.
+- page_size - Define the page size for paginated results (range is 1 to 100).
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.album_tracks_get(13750844, 1, 1, '')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -377,7 +394,7 @@ Parameters:
 - [x] [Artist Albums Get](https://developer.musixmatch.com/documentation/api-reference/artist-albums-get)
 - [x] [Artist Related Get](https://developer.musixmatch.com/documentation/api-reference/artist-related-get)
 - [x] [Album Get](https://developer.musixmatch.com/documentation/api-reference/album-get)
-- [ ] [Album Tracks Get](https://developer.musixmatch.com/documentation/api-reference/album-tracks-get)
+- [x] [Album Tracks Get](https://developer.musixmatch.com/documentation/api-reference/album-tracks-get)
 - [ ] [Tracking Url Get](https://developer.musixmatch.com/documentation/api-reference/tracking-url-get)
 - [ ] [Catalogue Dump Get](https://developer.musixmatch.com/documentation/api-reference/catalogue-dump-get)
 

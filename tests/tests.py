@@ -170,6 +170,14 @@ class TestMusixmatch(unittest.TestCase):
                          ['message']['body']['album']
                          ['album_name'], 'Party Rock')
 
+    def test_album_tracks_get(self):
+        self.assertEqual(self.musixmatch.album_tracks_get(13750844, 1, 1, '')
+                         ['message']['body']['track_list'][0]['track']
+                         ['track_id'], 30057052)
+        self.assertEqual(self.musixmatch.album_tracks_get(13750844, 1, 1, '')
+                         ['message']['body']['track_list'][0]['track']
+                         ['track_name'], "Don't Panic")
+
 
 if __name__ == '__main__':
     unittest.main()

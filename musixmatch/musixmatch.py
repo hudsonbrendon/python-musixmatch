@@ -459,3 +459,26 @@ class Musixmatch(object):
         data = self._request(self._get_url('album.get?album_id={}&format={}'
                                            .format(album_id, _format)))
         return data
+
+    def album_tracks_get(self, album_id, page, page_size, album_mbid,
+                         f_has_lyrics=None, _format='json'):
+        ''' This api provides you the list of the songs of an album.
+
+            Parameters:
+
+            album_id - Musixmatch album id.
+            album_mbid - Musicbrainz album id.
+            f_has_lyrics - When set, filter only contents with lyrics.
+            page - Define the page number for paginated results.
+            page_size - Define the page size for paginated results.
+            (range is 1 to 100).
+            format - Decide the output type json or xml (default json).
+        '''
+        data = self._request(self._get_url('album.tracks.get?album_id={}'
+                                           '&album_mbid={}&f_has_lyrics={}'
+                                           '&page={}&page_size={}&format={}'
+                                           .format(album_id, album_mbid,
+                                                   f_has_lyrics, page,
+                                                   _set_page_size(page_size),
+                                                   _format)))
+        return data
