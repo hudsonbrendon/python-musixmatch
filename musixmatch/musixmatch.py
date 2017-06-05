@@ -431,10 +431,10 @@ class Musixmatch(object):
 
             Parameters:
 
-            artist_id - The musiXmatch artist id
-            artist_mbid - The musicbrainz artist id
-            page - Define the page number for paginated results
-            page_size - Define the page size for paginated results
+            artist_id - The musiXmatch artist id.
+            artist_mbid - The musicbrainz artist id.
+            page - Define the page number for paginated results.
+            page_size - Define the page size for paginated results.
             (range is 1 to 100).
             format - Decide the output type json or xml (default json).
         '''
@@ -445,4 +445,17 @@ class Musixmatch(object):
                                                    artist_mbid, page,
                                                    _set_page_size(page_size),
                                                    _format)))
+        return data
+
+    def album_get(self, album_id, _format='json'):
+        ''' Get an album from our database:
+            name, release_date, release_type, cover art.
+
+            Parameters:
+
+            album_id - The musiXmatch album id.
+            format - Decide the output type json or xml (default json)
+        '''
+        data = self._request(self._get_url('album.get?album_id={}&format={}'
+                                           .format(album_id, _format)))
         return data

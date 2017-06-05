@@ -344,6 +344,19 @@ Parameters:
 >>> musixmatch.artist_related_get(56, 1, 1)
 ```
 
+## Album Get
+
+Get an album from our database: name, release_date, release_type, cover art.
+
+Parameters:
+
+- album_id - The musiXmatch album id
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.album_get(14250417)
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
