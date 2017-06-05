@@ -326,7 +326,7 @@ Parameters:
 - [x] [Matcher Track Get](https://developer.musixmatch.com/documentation/api-reference/matcher-track-get)
 - [x] [Matcher Subtitle Get](https://developer.musixmatch.com/documentation/api-reference/matcher-subtitle-get)
 - [x] [Artist Get](https://developer.musixmatch.com/documentation/api-reference/artist-get)
-- [ ] [Artist Search](https://developer.musixmatch.com/documentation/api-reference/artist-search)
+- [x] [Artist Search](https://developer.musixmatch.com/documentation/api-reference/artist-search)
 - [ ] [Artist Albums Get](https://developer.musixmatch.com/documentation/api-reference/artist-albums-get)
 - [ ] [Artist Related Get](https://developer.musixmatch.com/documentation/api-reference/artist-related-get)
 - [ ] [Album Get](https://developer.musixmatch.com/documentation/api-reference/album-get)
