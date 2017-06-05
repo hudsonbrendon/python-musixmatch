@@ -374,6 +374,25 @@ Parameters:
 >>> musixmatch.album_tracks_get(13750844, 1, 1, '')
 ```
 
+## Tracking Url Get
+
+Get the base url for the tracking script
+
+With this api you’ll be able to get the base url for the tracking script you need to insert in your page to legalize your existent lyrics library.
+
+Read more here: rights-clearance-on-your-existing-catalog
+
+In case you’re fetching the lyrics by the musiXmatch api called track.lyrics.get you don’t need to implement this API call.
+
+Parameters:
+
+- domain - Your domain name.
+- format - Decide the output type json or xml (default json).
+
+```python
+>>> musixmatch.album_tracks_get(13750844, 1, 1, '')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -395,7 +414,7 @@ Parameters:
 - [x] [Artist Related Get](https://developer.musixmatch.com/documentation/api-reference/artist-related-get)
 - [x] [Album Get](https://developer.musixmatch.com/documentation/api-reference/album-get)
 - [x] [Album Tracks Get](https://developer.musixmatch.com/documentation/api-reference/album-tracks-get)
-- [ ] [Tracking Url Get](https://developer.musixmatch.com/documentation/api-reference/tracking-url-get)
+- [x] [Tracking Url Get](https://developer.musixmatch.com/documentation/api-reference/tracking-url-get)
 - [ ] [Catalogue Dump Get](https://developer.musixmatch.com/documentation/api-reference/catalogue-dump-get)
 
 # Dependencies

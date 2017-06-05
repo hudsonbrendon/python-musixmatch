@@ -178,6 +178,19 @@ class TestMusixmatch(unittest.TestCase):
                          ['message']['body']['track_list'][0]['track']
                          ['track_name'], "Don't Panic")
 
+    def test_tracking_url_get(self):
+        self.assertEqual(self.musixmatch
+                             .tracking_url_get('www.mylyricswebsite.com')
+                             ['message']['header']['status_code'], 200)
+        self.assertEqual(self.musixmatch
+                             .tracking_url_get('www.mylyricswebsite.com')
+                             ['message']['body']['url'],
+                             'https://tracking.musixmatch.com/t1.0/0Zpu4T-'
+                             'OtRXG9fsFv75as0Sh8vj5LhHpzaWoF3S6CpGsWtVW2CUD'
+                             'BfiOHblXJ92yQFCulu7tEfAEIZTXXTS8JMRHbl_mkqkME0'
+                             'tn2yzptIeItJHpbXbyh3k7Yl7-OHuvRTADxpzp1KcRjIVEp'
+                             'J0K0Py89Rof7RWHc-Xor8--f7U/')
+
 
 if __name__ == '__main__':
     unittest.main()

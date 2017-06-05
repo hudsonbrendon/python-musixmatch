@@ -482,3 +482,24 @@ class Musixmatch(object):
                                                    _set_page_size(page_size),
                                                    _format)))
         return data
+
+    def tracking_url_get(self, domain, _format='json'):
+        ''' Get the base url for the tracking script
+
+            With this api you’ll be able to get the base
+            url for the tracking script you need to insert in
+            your page to legalize your existent lyrics library.
+            Read more here: rights-clearance-on-your-existing-catalog
+
+            In case you’re fetching the lyrics by the musiXmatch api
+            called track.lyrics.get you don’t need to implement this API call.
+
+            Parameters:
+
+            domain - Your domain name.
+            format - Decide the output type json or xml (default json).
+        '''
+        data = self._request(self._get_url('tracking.url.get?'
+                                           'domain={}&format={}'
+                                           .format(domain, _format)))
+        return data
