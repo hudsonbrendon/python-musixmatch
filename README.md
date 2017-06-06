@@ -393,6 +393,31 @@ Parameters:
 >>> musixmatch.album_tracks_get(13750844, 1, 1, '')
 ```
 
+## Catalogue Dump Get
+
+Get the list of our songs with the lyrics last updated information
+
+CATALOGUE_COMMONTRACKS
+
+Dump of our catalogue in this format:
+
+```python
+{
+    "track_name": "Shape of you",
+    "artist_name": "Ed Sheeran",
+	"commontrack_id": 12075763,
+    "instrumental": false,
+    "has_lyrics": yes,
+    "updated_time": "2013-04-08T09:28:40Z"
+}
+```
+
+Note: This method requires a commercial plan.
+
+```python
+>>> musixmatch.album_tracks_get(13750844, 1, 1, '')
+```
+
 # Features
 
 - [x] [Chart Artists Get](https://developer.musixmatch.com/documentation/api-reference/artist-chart-get)
@@ -415,7 +440,7 @@ Parameters:
 - [x] [Album Get](https://developer.musixmatch.com/documentation/api-reference/album-get)
 - [x] [Album Tracks Get](https://developer.musixmatch.com/documentation/api-reference/album-tracks-get)
 - [x] [Tracking Url Get](https://developer.musixmatch.com/documentation/api-reference/tracking-url-get)
-- [ ] [Catalogue Dump Get](https://developer.musixmatch.com/documentation/api-reference/catalogue-dump-get)
+- [x] [Catalogue Dump Get](https://developer.musixmatch.com/documentation/api-reference/catalogue-dump-get)
 
 # Dependencies
 

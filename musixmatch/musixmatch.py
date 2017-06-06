@@ -503,3 +503,24 @@ class Musixmatch(object):
                                            'domain={}&format={}'
                                            .format(domain, _format)))
         return data
+
+    def catalogue_dump_get(self, url):
+        ''' Get the list of our songs with the lyrics last updated information.
+
+            CATALOGUE_COMMONTRACKS
+
+            Dump of our catalogue in this format:
+
+            {
+                "track_name": "Shape of you",
+                "artist_name": "Ed Sheeran",
+                "commontrack_id":12075763,
+                "instrumental": false,
+                "has_lyrics": yes,
+                "updated_time": "2013-04-08T09:28:40Z"
+            }
+
+            Note: This method requires a commercial plan.
+        '''
+        data = self._request(self._get_url(url))
+        return data

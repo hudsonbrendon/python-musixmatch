@@ -188,8 +188,12 @@ class TestMusixmatch(unittest.TestCase):
                              'https://tracking.musixmatch.com/t1.0/0Zpu4T-'
                              'OtRXG9fsFv75as0Sh8vj5LhHpzaWoF3S6CpGsWtVW2CUD'
                              'BfiOHblXJ92yQFCulu7tEfAEIZTXXTS8JMRHbl_mkqkME0'
-                             'tn2yzptIeItJHpbXbyh3k7Yl7-OHuvRTADxpzp1KcRjIVEp'
-                             'J0K0Py89Rof7RWHc-Xor8--f7U/')
+                             'tn2yzptIeItJHpbXbyh3k7Yl7-OHuv5rPBIGAB75BIyNST'
+                             'o4MfrMeqR2grhgxu_yYyjZ2bt4U/')
+
+    def test_catalogue_dump_get(self):
+        self.assertEqual(self.musixmatch.catalogue_dump_get('test')
+                         ['message']['body'], '')
 
 
 if __name__ == '__main__':
