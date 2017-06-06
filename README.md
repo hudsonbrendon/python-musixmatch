@@ -415,7 +415,7 @@ Dump of our catalogue in this format:
 Note: This method requires a commercial plan.
 
 ```python
->>> musixmatch.album_tracks_get(13750844, 1, 1, '')
+>>> musixmatch.catalogue_dump_get('test')
 ```
 
 # Features
