@@ -1,7 +1,7 @@
 from setuptools import setup
 
 
-setup(name='python-musixmatch',
+setup(name='pymusixmatch',
       version='0.2',
       description='Simple integrate of API musixmatch.com with python',
       url='https://github.com/hudsonbrendon/python-musixmatch',
