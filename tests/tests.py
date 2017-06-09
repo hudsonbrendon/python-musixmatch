@@ -43,11 +43,12 @@ class TestMusixmatch(unittest.TestCase):
                          'Despacito - Remix')
 
     def test_track_search(self):
-        self.assertEqual(self.musixmatch.track_search(q_artist='justinbieber',
-                                                      page_size=10, page=1,
-                                                      s_track_rating='desc')
-                                                      ['message']['body']
-                                                      ['track_list'], [])
+        self.assertEqual(self.musixmatch
+                             .track_search(q_track='Let Me Love You',
+                                           q_artist='justinbieber',
+                                           page_size=10, page=1,
+                                           s_track_rating='desc')['message']
+                                           ['body']['track_list'], [])
 
     def test_track_get(self):
         self.assertEqual(self.musixmatch.track_get(15445219)
@@ -182,14 +183,6 @@ class TestMusixmatch(unittest.TestCase):
         self.assertEqual(self.musixmatch
                              .tracking_url_get('www.mylyricswebsite.com')
                              ['message']['header']['status_code'], 200)
-        self.assertEqual(self.musixmatch
-                             .tracking_url_get('www.mylyricswebsite.com')
-                             ['message']['body']['url'],
-                             'https://tracking.musixmatch.com/t1.0/0Zpu4T-'
-                             'OtRXG9fsFv75as0Sh8vj5LhHpzaWoF3S6CpGsWtVW2CUD'
-                             'BfiOHblXJ92yQFCulu7tEfAEIZTXXTS8JMRHbl_mkqkME0'
-                             'tn2yzptIeItJHpbXbyh3k7Yl7-OHuv5rPBIGAB75BIyNST'
-                             'o4MfrMeqR2grhgxu_yYyjZ2bt4U/')
 
     def test_catalogue_dump_get(self):
         self.assertEqual(self.musixmatch.catalogue_dump_get('test')

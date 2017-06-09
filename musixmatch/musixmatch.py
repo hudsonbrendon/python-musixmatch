@@ -68,7 +68,7 @@ class Musixmatch(object):
                                                    f_has_lyrics)))
         return data
 
-    def track_search(self, q_artist, page_size, page,
+    def track_search(self, q_track, q_artist, page_size, page,
                      s_track_rating, _format='json'):
         ''' Search for track in our database.
 
@@ -98,11 +98,11 @@ class Musixmatch(object):
         Note: This method requires a commercial plan.
         '''
         data = self._request(self._get_url('track.search?'
-                                           'q_artist={}'
+                                           'q_track={}&q_artist={}'
                                            '&page_size={}'
                                            '&page={}'
                                            '&s_track_rating={}&format={}'
-                                           .format(q_artist,
+                                           .format(q_track, q_artist,
                                                    _set_page_size(page_size),
                                                    page, s_track_rating,
                                                    _format)))
