@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(name='pymusixmatch',
-      version='0.2',
+      version='0.1',
       description='Simple integrate of API musixmatch.com with python',
       url='https://github.com/hudsonbrendon/python-musixmatch',
       author='Hudson Brendon',

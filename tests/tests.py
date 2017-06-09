@@ -36,11 +36,11 @@ class TestMusixmatch(unittest.TestCase):
         self.assertEqual(self.musixmatch.chart_tracks_get(1, 1, 1)
                          ['message']['body']['track_list'][0]
                          ['track']['album_name'],
-                         'Despacito Feat. Justin Bieber (Remix)')
+                         '2U (feat. Justin Bieber)')
         self.assertEqual(self.musixmatch.chart_tracks_get(1, 1, 1)
                          ['message']['body']['track_list'][0]
                          ['track']['track_name'],
-                         'Despacito - Remix')
+                         '2U')
 
     def test_track_search(self):
         self.assertEqual(self.musixmatch
