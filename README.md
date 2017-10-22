@@ -47,7 +47,7 @@ Parameters:
 - format - Decide the output type json or xml (default json).
 
 ```python
->>> musixmatch.chart_artists_get(1, 1)
+>>> musixmatch.chart_artists(1, 1)
 ```
 
 ## Chart Tracks Get
