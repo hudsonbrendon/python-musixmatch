@@ -524,3 +524,16 @@ class Musixmatch(object):
         '''
         data = self._request(self._get_url(url))
         return data
+
+    def genres_get(self, _format='json'):
+        ''' Get the list of the music genres of our catalogue:
+            music_genre_id, music_genre_parent_id, music_genre_name, music_genre_name_extended, music_genre_vanity
+
+            Parameters:
+
+            format - Decide the output type json or xml (default json)
+        '''
+        data = self._request(self._get_url('music.genres.get?'
+                                           'format={}'
+                                           .format(_format)))
+        return data
