@@ -4,3 +4,6 @@ verify_ssl = true
 
 [packages]
 requests = "*"
+
+[dev-packages]
+black = "*"
