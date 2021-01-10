@@ -1,0 +1,24 @@
+{
+    "python.linting.pylintEnabled": true,
+    "files.exclude": {
+        "**/.idea": true
+    },
+    "window.zoomLevel": -1,
+    "editor.fontSize": 20,
+    "code-runner.ignoreSelection": true,
+    "code-runner.runInTerminal": true,
+
+    "python.linting.enabled": true,
+    "python.linting.blackEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.isortEnabled": true,
+    "python.testing.pytestEnabled": true,
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    }
+}
