@@ -10,6 +10,8 @@ setup(
     author_email="contato.hudsonbrendon@gmail.com",
     license="MIT",
     packages=["musixmatch"],
-    install_requires=["requests",],
+    install_requires=[
+        "requests",
+    ],
     zip_safe=False,
 )

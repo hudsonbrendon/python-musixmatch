@@ -7,3 +7,9 @@ requests = "*"
 
 [dev-packages]
 black = "*"
+flake8 = "*"
+isort = "*"
+python-decouple = "*"
+pytest = "*"
+install = "*"
+requests-mock = "*"
