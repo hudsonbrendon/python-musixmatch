@@ -2,7 +2,6 @@
 
 Simple integrate of API musixmatch.com with python
 
-[![Build Status](https://travis-ci.org/hudsonbrendon/python-musixmatch.svg?branch=master)](https://travis-ci.org/hudsonbrendon/python-musixmatch)
 [![Github Issues](http://img.shields.io/github/issues/hudsonbrendon/python-musixmatch.svg?style=flat)](https://github.com/hudsonbrendon/python-musixmatch/issues?sort=updated&state=open)
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -13,6 +12,7 @@ Simple integrate of API musixmatch.com with python
 ```bash
 $ pip install pymusixmatch
 ```
+
 or
 
 ```bash
@@ -105,7 +105,6 @@ Parameters:
 - track_mbid - The musicbrainz recording id.
 - format - Decide the output type json or xml (default json).
 
-
 ```python
 >>> musixmatch.track_get(15445219)
 ```
@@ -119,7 +118,6 @@ Parameters:
 - track_id - The musiXmatch track id.
 - track_mbid - The musicbrainz recording id.
 - format - Decide the output type json or xml (default json).
-
 
 ```python
 >>> musixmatch.track_lyrics_get(15953433)
@@ -135,7 +133,6 @@ Parameters:
 
 - track_id - The musiXmatch track id.
 - format - Decide the output type json or xml (default json).
-
 
 ```python
 >>> musixmatch.track_snippet_get(16860631)
@@ -155,7 +152,6 @@ Parameters:
 - f_subtitle_length - The desired length of the subtitle (seconds).
 - f_subtitle_length_max_deviation - The maximum deviation allowed from the f_subtitle_length (seconds).
 - format - Decide the output type json or xml (default json).
-
 
 ```python
 >>> musixmatch.track_subtitle_get(14201829)
@@ -179,7 +175,6 @@ Parameters:
 - f_sync_length_max_deviation - The maximum deviation allowed.
 - from the f_sync_length (seconds).
 - format - Decide the output type json or xml (default json).
-
 
 ```python
 >>> musixmatch.track_richsync_get(14201829)
@@ -244,6 +239,7 @@ Match your song against our database.
 
 In some cases you already have some informations about the track title, artist name, album etc.
 A possible strategy to get the corresponding lyrics could be:
+
 - search our catalogue with a perfect match,
 - maybe try using the fuzzy search,
 - maybe try again using artist aliases, and so on.
