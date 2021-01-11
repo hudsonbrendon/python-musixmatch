@@ -158,7 +158,7 @@ class Musixmatch(object):
         )
         return data
 
-    def track_lyrics_get(self, track_id, track_mbid=None, _format="json"):
+    def track_lyrics_get(self, track_id, commontrack_id=None, _format="json"):
         """Get the lyrics of a track.
 
         Parameters:
@@ -169,9 +169,7 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "track.lyrics.get?"
-                "track_id={}&track_mbid={}"
-                "&format={}".format(track_id, track_mbid, _format)
+                f"track.lyrics.get?track_id={track_id}&commontrack_id={commontrack_id}&format={_format}"
             )
         )
         return data

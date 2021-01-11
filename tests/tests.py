@@ -64,26 +64,12 @@ class TestMusixmatch:
             "The Fame Monster",
         )
 
-    @pytest.mark.skip("Refactor tests")
-    def test_track_lyrics_get(self):
-        self.assertEqual(
-            self.musixmatch.track_lyrics_get(15953433)["message"]["body"]["lyrics"][
-                "lyrics_language"
-            ],
-            "en",
-        )
-        self.assertEqual(
-            self.musixmatch.track_lyrics_get(15953433)["message"]["body"]["lyrics"][
-                "lyrics_language_description"
-            ],
-            "English",
-        )
-        self.assertEqual(
-            self.musixmatch.track_lyrics_get(15953433)["message"]["body"]["lyrics"][
-                "lyrics_id"
-            ],
-            15912802,
-        )
+    def test_track_lyrics_get(self, requests_mock):
+        json = results.TRACKS
+        url = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=12345"
+        requests_mock.get(url=url, json=json)
+        request = self.musixmatch.track_lyrics_get(12345)
+        assert json == request
 
     @pytest.mark.skip("Refactor test")
     def test_track_snippet_get(self):
