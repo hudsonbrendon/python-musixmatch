@@ -14,15 +14,15 @@ class Musixmatch(object):
         self.__url = "http://api.musixmatch.com/ws/1.1/"
 
     def _get_url(self, url):
-        return self.__url + "{}&apikey={}".format(url, self._apikey)
+        return f"{self.__url}{url}&apikey={self.__apikey}"
 
     @property
     def _apikey(self):
         return self.__apikey
 
     def _request(self, url):
-        data = requests.get(url).json()
-        return data
+        request = requests.get(url)
+        return request.json()
 
     def _set_page_size(self, page_size):
         if page_size > 100:
@@ -42,16 +42,12 @@ class Musixmatch(object):
         country - A valid country code (default US).
         format - Decide the output type json or xml (default json).
         """
-        data = self._request(
+        request = self._request(
             self._get_url(
-                "chart.artists.get?"
-                "page={}&page_size={}"
-                "&country={}&format={}".format(
-                    page, self._set_page_size(page_size), country, _format
-                )
+                f"chart.artists.get?page={page}&page_size={self._set_page_size(page_size)}&country={country}&format={_format}"
             )
         )
-        return data
+        return request
 
     def chart_tracks_get(
         self, page, page_size, f_has_lyrics, country="us", _format="json"
@@ -67,17 +63,12 @@ class Musixmatch(object):
         country - A valid country code (default US).
         format - Decide the output type json or xml (default json).
         """
-        data = self._request(
+        request = self._request(
             self._get_url(
-                "chart.tracks.get?"
-                "page={}&page_size={}"
-                "&country={}&format={}"
-                "&f_has_lyrics={}".format(
-                    page, self._set_page_size(page_size), country, _format, f_has_lyrics
-                )
+                f"chart.tracks.get?page={page}&page_size={self._set_page_size(page_size)}&country={country}&format={_format}&f_has_lyrics={f_has_lyrics}"
             )
         )
-        return data
+        return request
 
     def track_search(
         self, q_track, q_artist, page_size, page, s_track_rating, _format="json"
@@ -187,9 +178,7 @@ class Musixmatch(object):
         format - Decide the output type json or xml (default json).
         """
         data = self._request(
-            self._get_url(
-                "track.snippet.get?" "track_id={}&format={}".format(track_id, _format)
-            )
+            self._get_url(f"track.snippet.get?track_id={track_id}&format={_format}")
         )
         return data
 

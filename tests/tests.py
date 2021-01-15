@@ -71,20 +71,12 @@ class TestMusixmatch:
         request = self.musixmatch.track_lyrics_get(12345)
         assert json == request
 
-    @pytest.mark.skip("Refactor test")
-    def test_track_snippet_get(self):
-        self.assertEqual(
-            self.musixmatch.track_snippet_get(16860631)["message"]["body"]["snippet"][
-                "snippet_id"
-            ],
-            16229519,
-        )
-        self.assertEqual(
-            self.musixmatch.track_snippet_get(16860631)["message"]["body"]["snippet"][
-                "snippet_body"
-            ],
-            "You shoot me down, but I won't fall",
-        )
+    def test_track_snippet_get(self, requests_mock):
+        json = results.TRACK_SNIPPET
+        url = "http://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=12345"
+        requests_mock.get(url=url, json=json)
+        request = self.musixmatch.track_snippet_get(12345)
+        assert json == request
 
     @pytest.mark.skip("Refactor test")
     def test_track_subtitle_get(self):
