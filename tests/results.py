@@ -73,3 +73,21 @@ TRACK_LYRICS = {
         },
     }
 }
+
+TRACK_SNIPPET = {
+    "message": {
+        "header": {"status_code": 200, "execute_time": 0.017257928848267},
+        "body": {
+            "snippet": {
+                "snippet_language": "en",
+                "restricted": 0,
+                "instrumental": 0,
+                "snippet_body": "You shoot me down, but I won't fall",
+                "script_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/xcjSq2",
+                "pixel_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/\/XHigoRKM",
+                "html_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/fSkLiROnf",
+                "updated_time": "2012-03-22T12:32:32Z",
+            }
+        },
+    }
+}
