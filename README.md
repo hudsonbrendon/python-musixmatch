@@ -90,7 +90,7 @@ Parameters:
 - format - Decide the output type (json or xml)
 
 ```python
->>> musixmatch.track_search(q_artist='twentyonepilots', page_size=10, page=1, s_track_rating='desc')
+>>> musixmatch.track_search(q_track='Stressed Out', q_artist='twentyonepilots', page_size=10, page=1, s_track_rating='desc')
 ```
 
 ## Track Get
