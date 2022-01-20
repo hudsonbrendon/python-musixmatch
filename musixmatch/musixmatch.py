@@ -43,15 +43,11 @@ class Musixmatch(object):
         format - Decide the output type json or xml (default json).
         """
         request = self._request(
-            self._get_url(
-                f"chart.artists.get?page={page}&page_size={self._set_page_size(page_size)}&country={country}&format={_format}"
-            )
+            self._get_url(f"chart.artists.get?page={page}&page_size={self._set_page_size(page_size)}&country={country}&format={_format}")
         )
         return request
 
-    def chart_tracks_get(
-        self, page, page_size, f_has_lyrics, country="us", _format="json"
-    ):
+    def chart_tracks_get(self, page, page_size, f_has_lyrics, country="us", _format="json"):
         """This api provides you the list
         of the top songs of a given country.
 
@@ -70,9 +66,7 @@ class Musixmatch(object):
         )
         return request
 
-    def track_search(
-        self, q_track, q_artist, page_size, page, s_track_rating, _format="json"
-    ):
+    def track_search(self, q_track, q_artist, page_size, page, s_track_rating, _format="json"):
         """Search for track in our database.
 
         Parameters:
@@ -142,9 +136,7 @@ class Musixmatch(object):
                 "track.get?"
                 "track_id={}&commontrack_id={}"
                 "&track_isrc={}&track_mbid={}"
-                "&format={}".format(
-                    track_id, commontrack_id, track_isrc, track_mbid, _format
-                )
+                "&format={}".format(track_id, commontrack_id, track_isrc, track_mbid, _format)
             )
         )
         return data
@@ -158,11 +150,7 @@ class Musixmatch(object):
         track_mbid - The musicbrainz track id.
         format - Decide the output type json or xml (default json).
         """
-        data = self._request(
-            self._get_url(
-                f"track.lyrics.get?track_id={track_id}&commontrack_id={commontrack_id}&format={_format}"
-            )
-        )
+        data = self._request(self._get_url(f"track.lyrics.get?track_id={track_id}&commontrack_id={commontrack_id}&format={_format}"))
         return data
 
     def track_snippet_get(self, track_id, _format="json"):
@@ -177,9 +165,7 @@ class Musixmatch(object):
         track_id - The musiXmatch track id.
         format - Decide the output type json or xml (default json).
         """
-        data = self._request(
-            self._get_url(f"track.snippet.get?track_id={track_id}&format={_format}")
-        )
+        data = self._request(self._get_url(f"track.snippet.get?track_id={track_id}&format={_format}"))
         return data
 
     def track_subtitle_get(
@@ -256,9 +242,7 @@ class Musixmatch(object):
                 "track.richsync.get?"
                 "track_id={}&f_sync_length={}"
                 "&f_sync_length_max_deviation={}"
-                "&format={}".format(
-                    track_id, f_sync_length, f_sync_length_max_deviation, _format
-                )
+                "&format={}".format(track_id, f_sync_length, f_sync_length_max_deviation, _format)
             )
         )
         return data
@@ -283,12 +267,7 @@ class Musixmatch(object):
         lyrics_body - The lyrics
         formatDecide the output type json or xml (default json)
         """
-        data = self._request(
-            self._get_url(
-                "track.lyrics.post?track_id={}"
-                "&lyrics_body={}&format={}".format(track_id, lyrics_body, _format)
-            )
-        )
+        data = self._request(self._get_url("track.lyrics.post?track_id={}" "&lyrics_body={}&format={}".format(track_id, lyrics_body, _format)))
         return data
 
     def track_lyrics_feedback_post(self, track_id, lyrics_id, feedback, _format="json"):
@@ -316,9 +295,7 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "track.lyrics.feedback.post?"
-                "track_id={}&lyrics_id={}"
-                "&feedback={}&format={}".format(track_id, lyrics_id, feedback, _format)
+                "track.lyrics.feedback.post?" "track_id={}&lyrics_id={}" "&feedback={}&format={}".format(track_id, lyrics_id, feedback, _format)
             )
         )
         return data
@@ -334,12 +311,7 @@ class Musixmatch(object):
         you can query using this id only (optional)
         format - Decide the output type json or xml (default json)
         """
-        data = self._request(
-            self._get_url(
-                "matcher.lyrics.get?"
-                "q_track={}&q_artist={}&format={}".format(q_track, q_artist, _format)
-            )
-        )
+        data = self._request(self._get_url("matcher.lyrics.get?" "q_track={}&q_artist={}&format={}".format(q_track, q_artist, _format)))
         return data
 
     def matcher_track_get(self, q_track, q_artist, _format="json"):
@@ -359,13 +331,7 @@ class Musixmatch(object):
         without changing a row in your code, while we take care of
         improving the implementation behind. Cool, uh?
         """
-        data = self._request(
-            self._get_url(
-                "matcher.track.get?"
-                "q_track={}&q_artist={}"
-                "&format={}".format(q_track, q_artist, _format)
-            )
-        )
+        data = self._request(self._get_url("matcher.track.get?" "q_track={}&q_artist={}" "&format={}".format(q_track, q_artist, _format)))
         return data
 
     def matcher_subtitle_get(
@@ -421,17 +387,10 @@ class Musixmatch(object):
         artist_mbid - Musicbrainz artist id.
         format - Decide the output type json or xml (default json).
         """
-        data = self._request(
-            self._get_url(
-                "artist.get?artist_id={}"
-                "&artist_mbid={}&format={}".format(artist_id, artist_mbid, _format)
-            )
-        )
+        data = self._request(self._get_url("artist.get?artist_id={}" "&artist_mbid={}&format={}".format(artist_id, artist_mbid, _format)))
         return data
 
-    def artist_search(
-        self, q_artist, page, page_size, f_artist_id, f_artist_mbid, _format="json"
-    ):
+    def artist_search(self, q_artist, page, page_size, f_artist_id, f_artist_mbid, _format="json"):
         """Search for artists in our database.
 
         Parameters:
@@ -501,9 +460,7 @@ class Musixmatch(object):
         )
         return data
 
-    def artist_related_get(
-        self, artist_id, page, page_size, artist_mbid=None, _format="json"
-    ):
+    def artist_related_get(self, artist_id, page, page_size, artist_mbid=None, _format="json"):
         """Get a list of artists somehow related to a given one.
 
         Parameters:
@@ -519,9 +476,7 @@ class Musixmatch(object):
             self._get_url(
                 "artist.related.get?artist_id={}"
                 "&artist_mbid={}&page={}"
-                "&page_size={}&format={}".format(
-                    artist_id, artist_mbid, page, _set_page_size(page_size), _format
-                )
+                "&page_size={}&format={}".format(artist_id, artist_mbid, page, _set_page_size(page_size), _format)
             )
         )
         return data
@@ -535,14 +490,10 @@ class Musixmatch(object):
         album_id - The musiXmatch album id.
         format - Decide the output type json or xml (default json)
         """
-        data = self._request(
-            self._get_url("album.get?album_id={}&format={}".format(album_id, _format))
-        )
+        data = self._request(self._get_url("album.get?album_id={}&format={}".format(album_id, _format)))
         return data
 
-    def album_tracks_get(
-        self, album_id, page, page_size, album_mbid, f_has_lyrics=None, _format="json"
-    ):
+    def album_tracks_get(self, album_id, page, page_size, album_mbid, f_has_lyrics=None, _format="json"):
         """This api provides you the list of the songs of an album.
 
         Parameters:
@@ -587,11 +538,7 @@ class Musixmatch(object):
         domain - Your domain name.
         format - Decide the output type json or xml (default json).
         """
-        data = self._request(
-            self._get_url(
-                "tracking.url.get?" "domain={}&format={}".format(domain, _format)
-            )
-        )
+        data = self._request(self._get_url("tracking.url.get?" "domain={}&format={}".format(domain, _format)))
         return data
 
     def catalogue_dump_get(self, url):
@@ -623,7 +570,5 @@ class Musixmatch(object):
 
         format - Decide the output type json or xml (default json)
         """
-        data = self._request(
-            self._get_url("music.genres.get?" "format={}".format(_format))
-        )
+        data = self._request(self._get_url("music.genres.get?" "format={}".format(_format)))
         return data
