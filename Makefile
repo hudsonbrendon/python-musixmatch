@@ -1,14 +1,14 @@
 install:
-	pipenv run python setup.py install
+	poetry run python setup.py install
 
 test:
-	pipenv run pytest tests/tests.py
+	poetry run pytest tests/tests.py
 
 black:
-	pipenv run black .
+	poetry run black .
 
 black-check:
-	pipenv run black . --check
+	poetry run black . --check
 
 dev:
 	make black
