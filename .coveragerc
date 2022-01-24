@@ -1,0 +1,10 @@
+[run]
+omit =
+    *__init__.py*
+    *test*
+    *tests*
+
+concurrency = greenlet
+
+[report]
+fail_under = 90

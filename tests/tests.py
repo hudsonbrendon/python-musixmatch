@@ -1,5 +1,5 @@
 import pytest
-from decouple import config
+
 from musixmatch import Musixmatch
 
 from . import results
@@ -14,7 +14,7 @@ class TestMusixmatch:
     def test_get_url(self):
         assert (
             self.musixmatch._get_url(
-                "chart.artists.get?" "page=1&page_size=1&country=us" "&format=json"
+                "chart.artists.get?" "page=1&page_size=1&country=us" "&format=json",
             )
             == f"{self.url}chart.artists.get?page=1&page_size=1&country=us&format=json&apikey=test"
         )
@@ -81,7 +81,8 @@ class TestMusixmatch:
     @pytest.mark.skip("Refactor test")
     def test_track_subtitle_get(self):
         self.assertEqual(
-            self.musixmatch.track_subtitle_get(14201829)["message"]["body"], ""
+            self.musixmatch.track_subtitle_get(14201829)["message"]["body"],
+            "",
         )
 
     @pytest.mark.skip("Refactor test")
@@ -108,7 +109,8 @@ class TestMusixmatch:
             200,
         )
         self.assertEqual(
-            self.musixmatch.track_lyrics_post(1471157, "test")["message"]["body"], ""
+            self.musixmatch.track_lyrics_post(1471157, "test")["message"]["body"],
+            "",
         )
 
     @pytest.mark.skip("Refactor test")
@@ -174,13 +176,21 @@ class TestMusixmatch:
     def test_artist_search(self):
         self.assertEqual(
             self.musixmatch.artist_search(
-                "prodigy", 1, 1, 16439, "4a4ee089-93b1-4470-af9a-6ff575d32704"
+                "prodigy",
+                1,
+                1,
+                16439,
+                "4a4ee089-93b1-4470-af9a-6ff575d32704",
             )["message"]["body"]["artist_list"][0]["artist"]["artist_id"],
             16439,
         )
         self.assertEqual(
             self.musixmatch.artist_search(
-                "prodigy", 1, 1, 16439, "4a4ee089-93b1-4470-af9a-6ff575d32704"
+                "prodigy",
+                1,
+                1,
+                16439,
+                "4a4ee089-93b1-4470-af9a-6ff575d32704",
             )["message"]["body"]["artist_list"][0]["artist"]["artist_name"],
             "The Prodigy",
         )
@@ -255,5 +265,6 @@ class TestMusixmatch:
     @pytest.mark.skip("Refactor test")
     def test_catalogue_dump_get(self):
         self.assertEqual(
-            self.musixmatch.catalogue_dump_get("test")["message"]["body"], ""
+            self.musixmatch.catalogue_dump_get("test")["message"]["body"],
+            "",
         )
