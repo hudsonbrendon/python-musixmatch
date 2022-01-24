@@ -32,5 +32,4 @@ jobs:
 
     - name: Run Tests
       run: |
-        coverage run -m pytest --disable-warnings
-        coverage report -m
+        make dev
