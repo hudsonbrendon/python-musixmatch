@@ -1,34 +1,36 @@
-name: Python package
+name: Python Musixmatch
 
-on: [push]
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.8, 3.9]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.9.6
+
+    - name: Install poetry
+      uses: snok/install-poetry@v1.2.0
+      with:
+        version: 1.1.8
+        virtualenvs-create: false
+        virtualenvs-in-project: false
+
     - name: Install dependencies
+      run: poetry install
+
+    - name: Outdated dependencies
+      run: poetry show -o
+
+    - name: Run Tests
       run: |
-        python -m pip install --upgrade pipenv
-        pipenv install --dev
-    - name: Lint with black
-      run: |
-        make black
-    - name: Test with pytest
-      run: |
-        make test
-    - name: Send Push Notification
-      uses: techulus/push-github-action@v0.0.2
-      env:
-        API_KEY: ${{ secrets.PUSH_API_KEY }}
-        MESSAGE: "Build Success!"
+        coverage run -m pytest --disable-warnings
+        coverage report -m
