@@ -2,27 +2,56 @@ import requests
 
 
 class Musixmatch(object):
-    def __init__(self, apikey):
+    def __init__(self, apikey: str) -> None:
         """Define objects of type Musixmatch.
 
-        Parameters:
-        apikey - For get your apikey access: https://developer.musixmatch.com
+        Args:
+            apikey ([str]): For get your apikey access: https://developer.musixmatch.com
         """
         self.__apikey = apikey
         self.__url = "http://api.musixmatch.com/ws/1.1/"
 
-    def _get_url(self, url):
+    def _get_url(self, url: str) -> str:
+        """Get the url for the request.
+
+        Args:
+            url (str): The url for the request.
+
+        Returns:
+            str: The url for the request.
+        """
         return f"{self.__url}{url}&apikey={self.__apikey}"
 
     @property
-    def _apikey(self):
+    def _apikey(self) -> str:
+        """Get the apikey.
+
+        Returns:
+            str: The apikey.
+        """
         return self.__apikey
 
-    def _request(self, url):
+    def _request(self, url: str) -> dict:
+        """Get the request.
+
+        Args:
+            url (str): The url for the request.
+
+        Returns:
+            dict: The request.
+        """
         request = requests.get(url)
         return request.json()
 
-    def _set_page_size(self, page_size):
+    def _set_page_size(self, page_size: int) -> int:
+        """Set the page size.
+
+        Args:
+            page_size (int): The page size.
+
+        Returns:
+            int: The page size.
+        """
         if page_size > 100:
             page_size = 100
         elif page_size < 1:
