@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-musixmatch"
+name = "pymusixmatch"
 version = "0.1.0"
 description = "Simple integrate of API musixmatch.com with python"
 authors = ["Hudson Brendon <contato.hudsonbrendon@gmail.com>"]
