@@ -1,6 +1,6 @@
 import pytest
 
-from musixmatch import Musixmatch
+from pymusixmatch import Musixmatch
 
 from . import results
 
