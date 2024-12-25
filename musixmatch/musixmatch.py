@@ -330,8 +330,9 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "track.lyrics.post?track_id={}"
-                "&lyrics_body={}&format={}".format(track_id, lyrics_body, _format),
+                "track.lyrics.post?track_id={}" "&lyrics_body={}&format={}".format(
+                    track_id, lyrics_body, _format
+                ),
             ),
         )
         return data
@@ -381,8 +382,9 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "matcher.lyrics.get?"
-                "q_track={}&q_artist={}&format={}".format(q_track, q_artist, _format),
+                "matcher.lyrics.get?" "q_track={}&q_artist={}&format={}".format(
+                    q_track, q_artist, _format
+                ),
             ),
         )
         return data
@@ -406,9 +408,9 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "matcher.track.get?"
-                "q_track={}&q_artist={}"
-                "&format={}".format(q_track, q_artist, _format),
+                "matcher.track.get?" "q_track={}&q_artist={}" "&format={}".format(
+                    q_track, q_artist, _format
+                ),
             ),
         )
         return data
@@ -468,8 +470,9 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "artist.get?artist_id={}"
-                "&artist_mbid={}&format={}".format(artist_id, artist_mbid, _format),
+                "artist.get?artist_id={}" "&artist_mbid={}&format={}".format(
+                    artist_id, artist_mbid, _format
+                ),
             ),
         )
         return data
