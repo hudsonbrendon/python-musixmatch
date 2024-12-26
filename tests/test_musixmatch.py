@@ -2,16 +2,14 @@ import pytest
 
 from pymusixmatch import Musixmatch
 
-from . import results
-
 
 class TestMusixmatch:
     @classmethod
-    def setup_class(cls):
+    def setup_class(cls) -> None:
         cls.musixmatch = Musixmatch("test")
         cls.url = "http://api.musixmatch.com/ws/1.1/"
 
-    def test_get_url(self):
+    def test_get_url(self) -> None:
         assert (
             self.musixmatch._get_url(
                 "chart.artists.get?" "page=1&page_size=1&country=us" "&format=json",
@@ -22,19 +20,17 @@ class TestMusixmatch:
     def test_apikey(self):
         assert self.musixmatch._apikey == "test"
 
-    def test_chart_artists(self, requests_mock):
-        json = results.CHART_ARTISTS
+    def test_chart_artists(self, requests_mock, chart_artists: dict) -> None:
         url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
-        requests_mock.get(url=url, json=json)
+        requests_mock.get(url=url, json=chart_artists)
         request = self.musixmatch.chart_artists(1, 1)
-        assert json == request
+        assert chart_artists == request
 
-    def test_chart_tracks_get(self, requests_mock):
-        json = results.TRACKS
+    def test_chart_tracks_get(self, requests_mock, tracks: dict) -> None:
         url = "http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=us&format=json&f_has_lyrics=1"
-        requests_mock.get(url=url, json=json)
+        requests_mock.get(url=url, json=tracks)
         request = self.musixmatch.chart_tracks_get(1, 1, 1)
-        assert json == request
+        assert tracks == request
 
     @pytest.mark.skip("Refactor test")
     def test_track_search(self):
@@ -64,19 +60,17 @@ class TestMusixmatch:
             "The Fame Monster",
         )
 
-    def test_track_lyrics_get(self, requests_mock):
-        json = results.TRACKS
+    def test_track_lyrics_get(self, requests_mock, tracks: dict) -> None:
         url = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=12345"
-        requests_mock.get(url=url, json=json)
+        requests_mock.get(url=url, json=tracks)
         request = self.musixmatch.track_lyrics_get(12345)
-        assert json == request
+        assert tracks == request
 
-    def test_track_snippet_get(self, requests_mock):
-        json = results.TRACK_SNIPPET
+    def test_track_snippet_get(self, requests_mock, track_snippet: dict) -> None:
         url = "http://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=12345"
-        requests_mock.get(url=url, json=json)
+        requests_mock.get(url=url, json=track_snippet)
         request = self.musixmatch.track_snippet_get(12345)
-        assert json == request
+        assert track_snippet == request
 
     @pytest.mark.skip("Refactor test")
     def test_track_subtitle_get(self):
