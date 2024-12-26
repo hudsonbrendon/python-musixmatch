@@ -2,34 +2,37 @@ import requests
 
 
 class Musixmatch(object):
-    def __init__(self, apikey: str) -> None:
+    BASE_URL = "http://api.musixmatch.com/ws"
+    VERSION = "1.1"
+
+    def __init__(self, api_key: str) -> None:
         """Define objects of type Musixmatch.
 
         Args:
-            apikey ([str]): For get your apikey access: https://developer.musixmatch.com
+            api_key ([str]): For get your apikey access: https://developer.musixmatch.com
         """
-        self.__apikey = apikey
-        self.__url = "http://api.musixmatch.com/ws/1.1/"
+        self.__api_key = api_key
+        self.__url = f"{self.BASE_URL}/{self.VERSION}/"
 
-    def _get_url(self, url: str) -> str:
+    def _get_url(self, path: str) -> str:
         """Get the url for the request.
 
         Args:
-            url (str): The url for the request.
+            path (str): The url for the request.
 
         Returns:
             str: The url for the request.
         """
-        return f"{self.__url}{url}&apikey={self.__apikey}"
+        return f"{self.__url}{path}&apikey={self._apikey}"
 
     @property
     def _apikey(self) -> str:
-        """Get the apikey.
+        """Get the api_key.
 
         Returns:
-            str: The apikey.
+            str: The api_key.
         """
-        return self.__apikey
+        return self.__api_key
 
     def _request(self, url: str) -> dict:
         """Get the request.
