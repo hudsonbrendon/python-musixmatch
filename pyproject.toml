@@ -9,7 +9,6 @@ readme = "README.md"
 python = "^3.10"
 requests = "^2.32.3"
 
-
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
 pytest-cov = "^6.0.0"
@@ -17,5 +16,5 @@ requests-mock = "^1.12.1"
 ruff = "^0.8.4"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
