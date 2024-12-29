@@ -13,12 +13,6 @@ Simple integrate of API musixmatch.com with python
 $ pip install pymusixmatch
 ```
 
-or
-
-```bash
-$ python setup.py install
-```
-
 # Authentication
 
 Register for an API key:
@@ -438,11 +432,9 @@ Note: This method requires a commercial plan.
 - [x] [Tracking Url Get](https://developer.musixmatch.com/documentation/api-reference/tracking-url-get)
 - [x] [Catalogue Dump Get](https://developer.musixmatch.com/documentation/api-reference/catalogue-dump-get)
 
-# Dependencies
+# Support
 
-- Python 3.5
-- [Pipenv](https://github.com/kennethreitz/pipenv)
-- [requests](http://docs.python-requests.org/en/latest/)
+- Python >=3.7
 
 # License
 
