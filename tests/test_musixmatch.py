@@ -19,10 +19,23 @@ class TestMusixmatch:
 
     @pytest.mark.parametrize(
         "page_size, expected",
-        [(-1, 1), (0, 1), (1, 1), (10, 10), (100, 100), (101, 100)],
+        [(1, 1), (10, 10), (100, 100)],
     )
     def test_set_page_size(self, page_size: int, expected: int) -> None:
         assert self.musixmatch._set_page_size(page_size) == expected
+
+    @pytest.mark.parametrize("page_size", [0, -1, 101, 200])
+    def test_set_page_size_with_invalid_page_size(
+        self,
+        page_size: int,
+    ) -> None:
+        with pytest.raises(ValueError) as excinfo:
+            self.musixmatch._set_page_size(page_size)
+
+        assert (
+            str(excinfo.value)
+            == f"Invalid page size: {page_size}, please use a page size between 1 and 100."
+        )
 
     def test_chart_artists(self, requests_mock, chart_artists: dict) -> None:
         url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
