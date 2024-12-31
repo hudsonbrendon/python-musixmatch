@@ -17,14 +17,34 @@ class TestMusixmatch:
             == f"{self.url}chart.artists.get?page=1&page_size=1&country=us&format=json&apikey=test"
         )
 
-    def test_apikey(self):
-        assert self.musixmatch._apikey == "test"
+    @pytest.mark.parametrize(
+        "page_size, expected",
+        [(-1, 1), (0, 1), (1, 1), (10, 10), (100, 100), (101, 100)],
+    )
+    def test_set_page_size(self, page_size: int, expected: int) -> None:
+        assert self.musixmatch._set_page_size(page_size) == expected
 
     def test_chart_artists(self, requests_mock, chart_artists: dict) -> None:
         url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
         requests_mock.get(url=url, json=chart_artists)
         request = self.musixmatch.chart_artists(1, 1)
         assert chart_artists == request
+
+    def test_chart_artists_with_invalid_country(
+        self, requests_mock, chart_artists: dict
+    ) -> None:
+        url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=invalid&format=json&apikey=test"
+        requests_mock.get(url=url, json=chart_artists)
+        with pytest.raises(ValueError):
+            self.musixmatch.chart_artists(1, 1, country="invalid")
+
+    def test_chart_artists_with_invalid_format(
+        self, requests_mock, chart_artists: dict
+    ) -> None:
+        url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=invalid&apikey=test"
+        requests_mock.get(url=url, json=chart_artists)
+        with pytest.raises(ValueError):
+            self.musixmatch.chart_artists(1, 1, _format="invalid")
 
     def test_chart_tracks_get(self, requests_mock, tracks: dict) -> None:
         url = "http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=us&format=json&f_has_lyrics=1"

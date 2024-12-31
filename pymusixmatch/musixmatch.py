@@ -1,4 +1,7 @@
+from typing import Optional
 import requests
+
+from pymusixmatch.enums import Country, Format, Route
 
 
 class Musixmatch(object):
@@ -61,20 +64,34 @@ class Musixmatch(object):
             page_size = 1
         return page_size
 
-    def chart_artists(self, page, page_size, country="us", _format="json"):
+    def chart_artists(
+        self,
+        page: int,
+        page_size: int,
+        country: Optional[Country] = Country.US.value,
+        _format: Optional[Format] = Format.JSON.value,
+    ) -> dict:
         """This api provides you the list
         of the top artists of a given country.
 
         Parameters:
 
-        page - Define the page number for paginated results.
-        page_size - Define the page size for paginated results (range 1 - 100).
-        country - A valid country code (default US).
-        format - Decide the output type json or xml (default json).
+        page (int): Define the page number for paginated results.
+        page_size (int): Define the page size for paginated results (range 1 - 100).
+        country (str): A valid country code (default US).
+        format (Format): Decide the output type json or xml (default json).
         """
+        if country not in Country._value2member_map_:
+            raise ValueError(
+                f"Invalid country code: {country}, please use a valid country code."
+            )
+
+        if _format not in Format._value2member_map_:
+            raise ValueError(f"Invalid format: {_format}, please use a valid format.")
+
         request = self._request(
             self._get_url(
-                f"chart.artists.get?page={page}&page_size={self._set_page_size(page_size)}&country={country}&format={_format}",
+                f"{Route.CHART_ARTISTS_GET.value}?page={page}&page_size={self._set_page_size(page_size)}&country={country}&format={_format}",
             ),
         )
         return request
