@@ -4,6 +4,7 @@ Simple integrate of API musixmatch.com with python
 
 [![Github Issues](http://img.shields.io/github/issues/hudsonbrendon/python-musixmatch.svg?style=flat)](https://github.com/hudsonbrendon/python-musixmatch/issues?sort=updated&state=open)
 ![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Upload Python Package](https://github.com/hudsonbrendon/python-musixmatch/actions/workflows/python-publish.yml/badge.svg)](https://github.com/hudsonbrendon/python-musixmatch/actions/workflows/python-publish.yml)
 
 ![Logo](logo.jpg)
 
