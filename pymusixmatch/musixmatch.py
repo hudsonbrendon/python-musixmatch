@@ -58,10 +58,10 @@ class Musixmatch(object):
         Returns:
             int: The page size.
         """
-        if page_size > 100:
-            page_size = 100
-        elif page_size < 1:
-            page_size = 1
+        if page_size > 100 or page_size < 1:
+            raise ValueError(
+                f"Invalid page size: {page_size}, please use a page size between 1 and 100."
+            )
         return page_size
 
     def chart_artists(
