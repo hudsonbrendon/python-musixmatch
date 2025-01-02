@@ -5,7 +5,7 @@ from pymusixmatch.enums import Country, Format, Route
 
 
 class Musixmatch(object):
-    BASE_URL = "http://api.musixmatch.com/ws"
+    BASE_URL = "https://api.musixmatch.com/ws"
     VERSION = "1.1"
 
     def __init__(self, api_key: str) -> None:
@@ -78,7 +78,7 @@ class Musixmatch(object):
 
         page (int): Define the page number for paginated results.
         page_size (int): Define the page size for paginated results (range 1 - 100).
-        country (str): A valid country code (default US).
+        country (Country): A valid country code (default US).
         format (Format): Decide the output type json or xml (default json).
         """
         if country not in Country._value2member_map_:
@@ -98,23 +98,31 @@ class Musixmatch(object):
 
     def chart_tracks_get(
         self,
-        page,
-        page_size,
-        f_has_lyrics,
-        country="us",
-        _format="json",
+        page: int,
+        page_size: int,
+        f_has_lyrics: bool,
+        country: Optional[Country] = Country.US.value,
+        _format: Optional[Format] = Format.JSON.value,
     ):
         """This api provides you the list
         of the top songs of a given country.
 
         Parameters:
 
-        page - Define the page number for paginated results.
-        page_size - Define the page size for paginated results (range 1 - 100).
-        f_has_lyrics - When set, filter only contents with lyrics.
-        country - A valid country code (default US).
-        format - Decide the output type json or xml (default json).
+        page (int): Define the page number for paginated results.
+        page_size (int): Define the page size for paginated results (range 1 - 100).
+        f_has_lyrics (bool): When set, filter only contents with lyrics.
+        country (Country): A valid country code (default US).
+        format (Format): Decide the output type json or xml (default json).
         """
+        if country not in Country._value2member_map_:
+            raise ValueError(
+                f"Invalid country code: {country}, please use a valid country code."
+            )
+
+        if _format not in Format._value2member_map_:
+            raise ValueError(f"Invalid format: {_format}, please use a valid format.")
+
         request = self._request(
             self._get_url(
                 f"chart.tracks.get?page={page}&page_size={self._set_page_size(page_size)}&country={country}&format={_format}&f_has_lyrics={f_has_lyrics}",

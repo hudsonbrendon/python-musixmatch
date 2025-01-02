@@ -7,7 +7,7 @@ class TestMusixmatch:
     @classmethod
     def setup_class(cls) -> None:
         cls.musixmatch = Musixmatch("test")
-        cls.url = "http://api.musixmatch.com/ws/1.1/"
+        cls.url = "https://api.musixmatch.com/ws/1.1/"
 
     def test_get_url(self) -> None:
         assert (
@@ -38,7 +38,7 @@ class TestMusixmatch:
         )
 
     def test_chart_artists(self, requests_mock, chart_artists: dict) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
+        url = "https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
         requests_mock.get(url=url, json=chart_artists)
         request = self.musixmatch.chart_artists(1, 1)
         assert chart_artists == request
@@ -46,7 +46,7 @@ class TestMusixmatch:
     def test_chart_artists_with_invalid_country(
         self, requests_mock, chart_artists: dict
     ) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=invalid&format=json&apikey=test"
+        url = "https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=invalid&format=json&apikey=test"
         requests_mock.get(url=url, json=chart_artists)
         with pytest.raises(ValueError):
             self.musixmatch.chart_artists(1, 1, country="invalid")
@@ -54,16 +54,32 @@ class TestMusixmatch:
     def test_chart_artists_with_invalid_format(
         self, requests_mock, chart_artists: dict
     ) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=invalid&apikey=test"
+        url = "https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=invalid&apikey=test"
         requests_mock.get(url=url, json=chart_artists)
         with pytest.raises(ValueError):
             self.musixmatch.chart_artists(1, 1, _format="invalid")
 
     def test_chart_tracks_get(self, requests_mock, tracks: dict) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=us&format=json&f_has_lyrics=1"
+        url = "https://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=us&format=json&f_has_lyrics=1"
         requests_mock.get(url=url, json=tracks)
         request = self.musixmatch.chart_tracks_get(1, 1, 1)
         assert tracks == request
+
+    def test_chart_tracks_get_with_invalid_country(
+        self, requests_mock, tracks: dict
+    ) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=invalid&format=json&f_has_lyrics=1&apikey=test"
+        requests_mock.get(url=url, json=tracks)
+        with pytest.raises(ValueError):
+            self.musixmatch.chart_tracks_get(1, 1, 1, country="invalid")
+
+    def test_chart_tracks_get_with_invalid_format(
+        self, requests_mock, tracks: dict
+    ) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=us&format=invalid&f_has_lyrics=1&apikey=test"
+        requests_mock.get(url=url, json=tracks)
+        with pytest.raises(ValueError):
+            self.musixmatch.chart_tracks_get(1, 1, 1, _format="invalid")
 
     @pytest.mark.skip("Refactor test")
     def test_track_search(self):
@@ -94,13 +110,13 @@ class TestMusixmatch:
         )
 
     def test_track_lyrics_get(self, requests_mock, tracks: dict) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=12345"
+        url = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=12345"
         requests_mock.get(url=url, json=tracks)
         request = self.musixmatch.track_lyrics_get(12345)
         assert tracks == request
 
     def test_track_snippet_get(self, requests_mock, track_snippet: dict) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=12345"
+        url = "https://api.musixmatch.com/ws/1.1/track.snippet.get?track_id=12345"
         requests_mock.get(url=url, json=track_snippet)
         request = self.musixmatch.track_snippet_get(12345)
         assert track_snippet == request
