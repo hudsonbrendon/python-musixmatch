@@ -65,6 +65,22 @@ class TestMusixmatch:
         request = self.musixmatch.chart_tracks_get(1, 1, 1)
         assert tracks == request
 
+    def test_chart_tracks_get_with_invalid_country(
+        self, requests_mock, tracks: dict
+    ) -> None:
+        url = "http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=invalid&format=json&f_has_lyrics=1&apikey=test"
+        requests_mock.get(url=url, json=tracks)
+        with pytest.raises(ValueError):
+            self.musixmatch.chart_tracks_get(1, 1, 1, country="invalid")
+
+    def test_chart_tracks_get_with_invalid_format(
+        self, requests_mock, tracks: dict
+    ) -> None:
+        url = "http://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=us&format=invalid&f_has_lyrics=1&apikey=test"
+        requests_mock.get(url=url, json=tracks)
+        with pytest.raises(ValueError):
+            self.musixmatch.chart_tracks_get(1, 1, 1, _format="invalid")
+
     @pytest.mark.skip("Refactor test")
     def test_track_search(self):
         self.assertEqual(
