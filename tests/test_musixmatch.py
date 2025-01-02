@@ -38,7 +38,7 @@ class TestMusixmatch:
         )
 
     def test_chart_artists(self, requests_mock, chart_artists: dict) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
+        url = "https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
         requests_mock.get(url=url, json=chart_artists)
         request = self.musixmatch.chart_artists(1, 1)
         assert chart_artists == request
@@ -46,7 +46,7 @@ class TestMusixmatch:
     def test_chart_artists_with_invalid_country(
         self, requests_mock, chart_artists: dict
     ) -> None:
-        url = "http://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=invalid&format=json&apikey=test"
+        url = "https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=invalid&format=json&apikey=test"
         requests_mock.get(url=url, json=chart_artists)
         with pytest.raises(ValueError):
             self.musixmatch.chart_artists(1, 1, country="invalid")
