@@ -5,7 +5,7 @@ from pymusixmatch.enums import Country, Format, Route
 
 
 class Musixmatch(object):
-    BASE_URL = "http://api.musixmatch.com/ws"
+    BASE_URL = "https://api.musixmatch.com/ws"
     VERSION = "1.1"
 
     def __init__(self, api_key: str) -> None:
