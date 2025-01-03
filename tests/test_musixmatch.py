@@ -40,8 +40,7 @@ class TestMusixmatch:
     def test_chart_artists(self, requests_mock, chart_artists: dict) -> None:
         url = "https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=1&country=us&format=json"
         requests_mock.get(url=url, json=chart_artists)
-        request = self.musixmatch.chart_artists(1, 1)
-        assert chart_artists == request
+        assert chart_artists == self.musixmatch.chart_artists(1, 1)
 
     def test_chart_artists_with_invalid_country(
         self, requests_mock, chart_artists: dict
@@ -62,8 +61,7 @@ class TestMusixmatch:
     def test_chart_tracks_get(self, requests_mock, tracks: dict) -> None:
         url = "https://api.musixmatch.com/ws/1.1/chart.tracks.get?page=1&page_size=1&country=us&format=json&f_has_lyrics=1"
         requests_mock.get(url=url, json=tracks)
-        request = self.musixmatch.chart_tracks_get(1, 1, 1)
-        assert tracks == request
+        assert tracks == self.musixmatch.chart_tracks_get(1, 1, 1)
 
     def test_chart_tracks_get_with_invalid_country(
         self, requests_mock, tracks: dict
@@ -81,18 +79,65 @@ class TestMusixmatch:
         with pytest.raises(ValueError):
             self.musixmatch.chart_tracks_get(1, 1, 1, _format="invalid")
 
-    @pytest.mark.skip("Refactor test")
-    def test_track_search(self):
-        self.assertEqual(
+    def test_track_search(self, requests_mock, track_search: dict) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/track.search?q_track=Let%20Me%20Love%20You&q_artist=justinbieber&q_lyrics=&q_track_artist=&q_writer=&q=&f_artist_id=&f_music_genre_id=&f_lyrics_language=&f_has_lyrics=&f_track_release_group_first_release_date_min=&f_track_release_group_first_release_date_max=&s_artist_rating=desc&s_track_rating=desc&quorum_factor=&page=1&page_size=10&apikey=test"
+        requests_mock.get(url=url, json=track_search)
+
+        assert (
             self.musixmatch.track_search(
                 q_track="Let Me Love You",
                 q_artist="justinbieber",
                 page_size=10,
                 page=1,
                 s_track_rating="desc",
-            )["message"]["body"]["track_list"],
-            [],
+            )
+            == track_search
         )
+
+    def test_track_search_with_invalid_page_size(
+        self, requests_mock, track_search: dict
+    ) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/track.search?q_track=Let%20Me%20Love%20You&q_artist=justinbieber&q_lyrics=&q_track_artist=&q_writer=&q=&f_artist_id=&f_music_genre_id=&f_lyrics_language=&f_has_lyrics=&f_track_release_group_first_release_date_min=&f_track_release_group_first_release_date_max=&s_artist_rating=desc&s_track_rating=desc&quorum_factor=&page=1&page_size=101&apikey=test"
+        requests_mock.get(url=url, json=track_search)
+
+        with pytest.raises(ValueError):
+            self.musixmatch.track_search(
+                q_track="Let Me Love You",
+                q_artist="justinbieber",
+                page_size=101,
+                page=1,
+                s_track_rating="desc",
+            )
+
+    def test_track_search_with_invalid_s_artist_rating(
+        self, requests_mock, track_search: dict
+    ) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/track.search?q_track=Let%20Me%20Love%20You&q_artist=justinbieber&q_lyrics=&q_track_artist=&q_writer=&q=&f_artist_id=&f_music_genre_id=&f_lyrics_language=&f_has_lyrics=&f_track_release_group_first_release_date_min=&f_track_release_group_first_release_date_max=&s_artist_rating=invalid&s_track_rating=desc&quorum_factor=&page=1&page_size=10&apikey=test"
+        requests_mock.get(url=url, json=track_search)
+
+        with pytest.raises(ValueError):
+            self.musixmatch.track_search(
+                q_track="Let Me Love You",
+                q_artist="justinbieber",
+                page_size=10,
+                page=1,
+                s_artist_rating="invalid",
+            )
+
+    def test_track_search_with_invalid_s_track_rating(
+        self, requests_mock, track_search: dict
+    ) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/track.search?q_track=Let%20Me%20Love%20You&q_artist=justinbieber&q_lyrics=&q_track_artist=&q_writer=&q=&f_artist_id=&f_music_genre_id=&f_lyrics_language=&f_has_lyrics=&f_track_release_group_first_release_date_min=&f_track_release_group_first_release_date_max=&s_artist_rating=desc&s_track_rating=invalid&quorum_factor=&page=1&page_size=10&apikey=test"
+        requests_mock.get(url=url, json=track_search)
+
+        with pytest.raises(ValueError):
+            self.musixmatch.track_search(
+                q_track="Let Me Love You",
+                q_artist="justinbieber",
+                page_size=10,
+                page=1,
+                s_track_rating="invalid",
+            )
 
     @pytest.mark.skip("Refactor test")
     def test_track_get(self):

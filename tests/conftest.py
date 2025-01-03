@@ -82,3 +82,19 @@ def track_snippet() -> dict:
             },
         }
     }
+
+
+@pytest.fixture
+def track_search() -> dict:
+    return {
+        "message": {
+            "header": {"status_code": 200, "execute_time": 0.00136, "available": 646},
+            "body": {
+                "track_list": [
+                    {"track": "track'"},
+                    {"track": "track'"},
+                    {"track": "track'"},
+                ]
+            },
+        }
+    }
