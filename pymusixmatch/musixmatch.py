@@ -1,7 +1,7 @@
 from typing import Optional
 import requests
 
-from pymusixmatch.enums import Country, Format, Route
+from pymusixmatch.enums import Country, Format, Ordering, Route
 
 
 class Musixmatch(object):
@@ -103,7 +103,7 @@ class Musixmatch(object):
         f_has_lyrics: bool,
         country: Optional[Country] = Country.US.value,
         _format: Optional[Format] = Format.JSON.value,
-    ):
+    ) -> dict:
         """This api provides you the list
         of the top songs of a given country.
 
@@ -132,54 +132,79 @@ class Musixmatch(object):
 
     def track_search(
         self,
-        q_track,
-        q_artist,
-        page_size,
-        page,
-        s_track_rating,
-        _format="json",
-    ):
+        page: int,
+        page_size: int,
+        q_track: Optional[str] = "",
+        q_artist: Optional[str] = "",
+        q_lyrics: Optional[str] = "",
+        q_track_artist: Optional[str] = "",
+        q_writer: Optional[str] = "",
+        q: Optional[str] = "",
+        f_artist_id: Optional[int] = "",
+        f_music_genre_id: Optional[int] = "",
+        f_lyrics_language: Optional[str] = "",
+        f_has_lyrics: Optional[bool] = "",
+        f_track_release_group_first_release_date_min: Optional[str] = "",
+        f_track_release_group_first_release_date_max: Optional[str] = "",
+        s_artist_rating: Optional[Ordering] = Ordering.DESC.value,
+        s_track_rating: Optional[Ordering] = Ordering.DESC.value,
+        quorum_factor: Optional[float] = "",
+    ) -> dict:
         """Search for track in our database.
 
         Parameters:
 
-        q_track - The song title.
-        q_artist - The song artist.
-        q_lyrics - Any word in the lyrics.
-        f_artist_id - When set, filter by this artist id.
-        f_music_genre_id - When set, filter by this music category id.
-        f_lyrics_language - Filter by the lyrics language (en,it,..).
-        f_has_lyrics - When set, filter only contents with lyrics.
-        f_track_release_group_first_release_date_min - When set, filter
-        the tracks with release date newer than value, format is YYYYMMDD.
-        f_track_release_group_first_release_date_max - When set, filter
-        the tracks with release date older than value, format is YYYYMMDD.
-        s_artist_rating - Sort by our popularity index for artists (asc|desc).
-        s_track_rating - Sort by our popularity index for tracks (asc|desc).
-        quorum_factor - Search only a part of the given query string.
-        Allowed range is (0.1 – 0.9).
-        page - Define the page number for paginated results.
-        page_size - Define the page size for paginated results.
-        Range is 1 to 100.
-        callback - jsonp callback.
-        format - Decide the output type json or xml (default json).
+        q_track (str): The song title
+        q_artist (str): The song artist
+        q_lyrics (str): Any word in the lyrics
+        q_track_artist (str): Any word in the song title or artist name
+        q_writer (str): Search among writers
+        q (str): Any word in the song title or artist name or lyrics
+        f_artist_id (int): When set, filter by this artist id
+        f_music_genre_id (int): When set, filter by this music category id
+        f_lyrics_language (str): Filter by the lyrics language (en,it,..)
+        f_has_lyrics (bool): When set, filter only contents with lyrics
+        f_track_release_group_first_release_date_min (str): When set, filter the tracks with release date newer than value, format is YYYYMMDD
+        f_track_release_group_first_release_date_max (str): When set, filter the tracks with release date older than value, format is YYYYMMDD
+        s_artist_rating (Ordering): Sort by our popularity index for artists (asc|desc)
+        s_track_rating (Ordering): Sort by our popularity index for tracks (asc|desc)
+        quorum_factor (float): Search only a part of the given query string.Allowed range is (0.1 – 0.9)
+        page (int): Define the page number for paginated results
+        page_size (int): Define the page size for paginated results. Range is 1 to 100.
 
         Note: This method requires a commercial plan.
         """
+
+        if s_artist_rating not in Ordering._value2member_map_:
+            raise ValueError(
+                f"Invalid artist rating: {s_artist_rating}, please use a valid artist rating."
+            )
+
+        if s_track_rating not in Ordering._value2member_map_:
+            raise ValueError(
+                f"Invalid track rating: {s_track_rating}, please use a valid track rating."
+            )
+
         data = self._request(
             self._get_url(
                 "track.search?"
-                "q_track={}&q_artist={}"
-                "&page_size={}"
-                "&page={}"
-                "&s_track_rating={}&format={}".format(
-                    q_track,
-                    q_artist,
-                    self._set_page_size(page_size),
-                    page,
-                    s_track_rating,
-                    _format,
-                ),
+                f"q_track={q_track}&"
+                f"q_artist={q_artist}&"
+                f"q_lyrics={q_lyrics}&"
+                f"q_track_artist={q_track_artist}&"
+                f"q_writer={q_writer}&"
+                f"q={q}&"
+                f"f_artist_id={f_artist_id}&"
+                f"f_music_genre_id={f_music_genre_id}&"
+                f"f_lyrics_language={f_lyrics_language}&"
+                f"f_has_lyrics={f_has_lyrics}&"
+                f"f_track_release_group_first_release_date_min={f_track_release_group_first_release_date_min}&"
+                f"f_track_release_group_first_release_date_max={f_track_release_group_first_release_date_max}&"
+                f"s_artist_rating={s_artist_rating}&"
+                f"s_track_rating={s_track_rating}&"
+                f"quorum_factor={quorum_factor}&"
+                f"page={page}&"
+                f"page_size={self._set_page_size(page_size)}"
             ),
         )
         return data

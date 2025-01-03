@@ -72,3 +72,8 @@ class Country(Enum):
 class Format(Enum):
     JSON = "json"
     XML = "xml"
+
+
+class Ordering(Enum):
+    ASC = "asc"
+    DESC = "desc"
