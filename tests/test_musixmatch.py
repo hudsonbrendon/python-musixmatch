@@ -139,20 +139,11 @@ class TestMusixmatch:
                 s_track_rating="invalid",
             )
 
-    @pytest.mark.skip("Refactor test")
-    def test_track_get(self):
-        self.assertEqual(
-            self.musixmatch.track_get(15445219)["message"]["body"]["track"][
-                "artist_name"
-            ],
-            "Lady Gaga",
-        )
-        self.assertEqual(
-            self.musixmatch.track_get(15445219)["message"]["body"]["track"][
-                "album_name"
-            ],
-            "The Fame Monster",
-        )
+    def test_track_get(self, requests_mock, track_get: dict) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/track.get?commontrack_id=12345&track_isrc=&apikey=test"
+        requests_mock.get(url=url, json=track_get)
+        request = self.musixmatch.track_get(12345)
+        assert track_get == request
 
     def test_track_lyrics_get(self, requests_mock, tracks: dict) -> None:
         url = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=12345"
