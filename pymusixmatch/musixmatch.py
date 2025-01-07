@@ -211,8 +211,8 @@ class Musixmatch(object):
 
     def track_get(
         self,
-        commontrack_id: str = None,
-        track_isrc: str = None,
+        commontrack_id: Optional[str] = "",
+        track_isrc: Optional[str] = "",
     ):
         """Get a track info from our database:
         title, artist, instrumental flag and cover art.

@@ -140,7 +140,7 @@ class TestMusixmatch:
             )
 
     def test_track_get(self, requests_mock, track_get: dict) -> None:
-        url = "https://api.musixmatch.com/ws/1.1/track.get?commontrack_id=12345&track_isrc=None&apikey=test"
+        url = "https://api.musixmatch.com/ws/1.1/track.get?commontrack_id=12345&track_isrc=&apikey=test"
         requests_mock.get(url=url, json=track_get)
         request = self.musixmatch.track_get(12345)
         assert track_get == request
