@@ -98,3 +98,13 @@ def track_search() -> dict:
             },
         }
     }
+
+
+@pytest.fixture
+def track_get() -> dict:
+    return {
+        "message": {
+            "header": {"status_code": 200, "execute_time": 0.00136},
+            "body": {"track": "track"},
+        }
+    }

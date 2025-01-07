@@ -211,34 +211,22 @@ class Musixmatch(object):
 
     def track_get(
         self,
-        track_id,
-        commontrack_id=None,
-        track_isrc=None,
-        track_mbid=None,
-        _format="json",
+        commontrack_id: str = None,
+        track_isrc: str = None,
     ):
         """Get a track info from our database:
         title, artist, instrumental flag and cover art.
 
         Parameters:
 
-        track_id - The musiXmatch track id.
         commontrack_id - The musiXmatch commontrack id.
         track_isrc - A valid ISRC identifier.
-        track_mbid - The musicbrainz recording id.
-        format - Decide the output type json or xml (default json).
         """
         data = self._request(
             self._get_url(
-                "track.get?"
-                "track_id={}&commontrack_id={}"
-                "&track_isrc={}&track_mbid={}"
-                "&format={}".format(
-                    track_id,
+                "track.get?commontrack_id={}&track_isrc={}".format(
                     commontrack_id,
                     track_isrc,
-                    track_mbid,
-                    _format,
                 ),
             ),
         )
