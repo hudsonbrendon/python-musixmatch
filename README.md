@@ -99,11 +99,8 @@ Get a track info from our database: title, artist, instrumental flag and cover a
 
 Parameters:
 
-- track_id - The musiXmatch track id.
 - commontrack_id - The musiXmatch commontrack id.
 - track_isrc - A valid ISRC identifier.
-- track_mbid - The musicbrainz recording id.
-- format - Decide the output type json or xml (default json).
 
 ```python
 >>> musixmatch.track_get(15445219)
