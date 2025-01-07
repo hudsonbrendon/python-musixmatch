@@ -219,8 +219,8 @@ class Musixmatch(object):
 
         Parameters:
 
-        commontrack_id - The musiXmatch commontrack id.
-        track_isrc - A valid ISRC identifier.
+        commontrack_id (str): The musiXmatch commontrack id.
+        track_isrc (str): A valid ISRC identifier.
         """
         data = self._request(
             self._get_url(
