@@ -213,7 +213,7 @@ class Musixmatch(object):
         self,
         commontrack_id: Optional[str] = "",
         track_isrc: Optional[str] = "",
-    ):
+    ) -> dict:
         """Get a track info from our database:
         title, artist, instrumental flag and cover art.
 
@@ -232,18 +232,17 @@ class Musixmatch(object):
         )
         return data
 
-    def track_lyrics_get(self, track_id, commontrack_id=None, _format="json"):
+    def track_lyrics_get(self, track_id: str = "", commontrack_id: str = "") -> dict:
         """Get the lyrics of a track.
 
         Parameters:
 
-        track_id - The musiXmatch track id.
-        track_mbid - The musicbrainz track id.
-        format - Decide the output type json or xml (default json).
+        track_id (str): The musiXmatch track id.
+        track_mbid (str): The musicbrainz track id.
         """
         data = self._request(
             self._get_url(
-                f"track.lyrics.get?track_id={track_id}&commontrack_id={commontrack_id}&format={_format}",
+                f"track.lyrics.get?track_id={track_id}&commontrack_id={commontrack_id}",
             ),
         )
         return data
