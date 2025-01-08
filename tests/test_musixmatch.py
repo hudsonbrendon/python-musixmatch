@@ -146,9 +146,9 @@ class TestMusixmatch:
         assert track_get == request
 
     def test_track_lyrics_get(self, requests_mock, tracks: dict) -> None:
-        url = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=12345"
+        url = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=12345&commontrack_id=12345"
         requests_mock.get(url=url, json=tracks)
-        request = self.musixmatch.track_lyrics_get(12345)
+        request = self.musixmatch.track_lyrics_get(12345, 12345)
         assert tracks == request
 
     def test_track_snippet_get(self, requests_mock, track_snippet: dict) -> None:
