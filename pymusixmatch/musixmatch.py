@@ -247,7 +247,7 @@ class Musixmatch(object):
         )
         return data
 
-    def track_snippet_get(self, track_id, _format="json"):
+    def track_snippet_get(self, track_id: str) -> dict:
         """Get the snippet for a given track.
 
         A lyrics snippet is a very short representation of a song lyrics.
@@ -256,11 +256,10 @@ class Musixmatch(object):
 
         Parameters:
 
-        track_id - The musiXmatch track id.
-        format - Decide the output type json or xml (default json).
+        track_id (str): The musiXmatch track id.
         """
         data = self._request(
-            self._get_url(f"track.snippet.get?track_id={track_id}&format={_format}"),
+            self._get_url(f"track.snippet.get?track_id={track_id}"),
         )
         return data
 
