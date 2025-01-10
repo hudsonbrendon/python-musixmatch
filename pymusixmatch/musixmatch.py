@@ -310,11 +310,10 @@ class Musixmatch(object):
 
     def track_richsync_get(
         self,
-        track_id,
-        f_sync_length=None,
-        f_sync_length_max_deviation=None,
-        _format="json",
-    ):
+        track_id: str,
+        f_sync_length: str = "",
+        f_sync_length_max_deviation: str = "",
+    ) -> dict:
         """Get the Rich sync for a track.
 
         A rich sync is an enhanced version of the
@@ -327,21 +326,19 @@ class Musixmatch(object):
 
         Parameters:
 
-        track_id - The musiXmatch track id.
-        f_sync_length - The desired length of the sync (seconds).
-        f_sync_length_max_deviation - The maximum deviation allowed.
+        track_id (str): The musiXmatch track id.
+        f_sync_length (str): The desired length of the sync (seconds).
+        f_sync_length_max_deviation (str): The maximum deviation allowed.
         from the f_sync_length (seconds).
         """
         data = self._request(
             self._get_url(
                 "track.richsync.get?"
                 "track_id={}&f_sync_length={}"
-                "&f_sync_length_max_deviation={}"
-                "&format={}".format(
+                "&f_sync_length_max_deviation={}".format(
                     track_id,
                     f_sync_length,
                     f_sync_length_max_deviation,
-                    _format,
                 ),
             ),
         )
