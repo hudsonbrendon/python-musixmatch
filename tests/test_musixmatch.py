@@ -164,20 +164,11 @@ class TestMusixmatch:
             "",
         )
 
-    @pytest.mark.skip("Refactor test")
-    def test_track_richsync_get(self):
-        self.assertEqual(
-            self.musixmatch.track_richsync_get(114837357)["message"]["body"][
-                "richsync"
-            ]["richsync_id"],
-            6,
-        )
-        self.assertEqual(
-            self.musixmatch.track_richsync_get(114837357)["message"]["body"][
-                "richsync"
-            ]["richsync_length"],
-            230,
-        )
+    def test_track_richsync_get(self, requests_mock, track_richsync_get: dict) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/track.richsync.get?track_id=114837357"
+        requests_mock.get(url=url, json=track_richsync_get)
+        request = self.musixmatch.track_richsync_get(114837357)
+        assert track_richsync_get == request
 
     @pytest.mark.skip("Refactor test")
     def test_track_lyrics_post(self):
