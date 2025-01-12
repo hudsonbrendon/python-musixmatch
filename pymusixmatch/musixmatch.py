@@ -265,13 +265,12 @@ class Musixmatch(object):
 
     def track_subtitle_get(
         self,
-        track_id,
-        track_mbid=None,
-        subtitle_format=None,
-        f_subtitle_length=None,
-        f_subtitle_length_max_deviation=None,
-        _format="json",
-    ):
+        track_id: str,
+        track_mbid: str = "",
+        subtitle_format: str = "",
+        f_subtitle_length: str = "",
+        f_subtitle_length_max_deviation: str = "",
+    ) -> dict:
         """Retreive the subtitle of a track.
 
         Return the subtitle of a track in LRC or DFXP format.
@@ -280,14 +279,13 @@ class Musixmatch(object):
 
         Parameters:
 
-        track_id - The musiXmatch track id.
-        track_mbid - The musicbrainz track id.
-        subtitle_format - The format of the subtitle (lrc,dfxp,stledu).
+        track_id (str): The musiXmatch track id.
+        track_mbid (str): The musicbrainz track id.
+        subtitle_format (str): The format of the subtitle (lrc,dfxp,stledu).
         Default to lrc.
-        f_subtitle_length - The desired length of the subtitle (seconds).
-        f_subtitle_length_max_deviation - The maximum deviation allowed.
+        f_subtitle_length (str): The desired length of the subtitle (seconds).
+        f_subtitle_length_max_deviation (str): The maximum deviation allowed.
         from the f_subtitle_length (seconds).
-        format - Decide the output type json or xml (default json).
         """
         data = self._request(
             self._get_url(
@@ -295,14 +293,12 @@ class Musixmatch(object):
                 "track_id={}&track_mbid={}"
                 "&subtitle_format={}"
                 "&f_subtitle_length={}"
-                "&f_subtitle_length_max_deviation={}"
-                "&format={}".format(
+                "&f_subtitle_length_max_deviation={}".format(
                     track_id,
                     track_mbid,
                     subtitle_format,
                     f_subtitle_length,
                     f_subtitle_length_max_deviation,
-                    _format,
                 ),
             ),
         )
