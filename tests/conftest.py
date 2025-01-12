@@ -134,3 +134,24 @@ def track_richsync_get() -> dict:
             },
         }
     }
+
+
+@pytest.fixture
+def track_subtitle_get() -> dict:
+    return {
+        "message": {
+            "header": {"status_code": 200, "execute_time": 0.0058},
+            "body": {
+                "subtitle": {
+                    "subtitle_id": 18116,
+                    "restricted": 0,
+                    "subtitle_body": "I'm tryna put you in the worst mood, ah\r\nP1 cleaner than your church shoes, ah\r\nMilli point two just to hurt you, ah\r\nAll red Lamb' just to tease you, ah\r\nNone of these toys on lease too, ah",
+                    "subtitle_language": "en",
+                    "script_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/gs2ObSlxR9vsuyJ9XYRITJw==\/",
+                    "pixel_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/gs2ObSlxR9vsuGDsbZwOULTQ==\/",
+                    "html_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/gs2ObSlxR9yR97gQ==\/",
+                    "lyrics_copyright": "Lyrics powered by www.musiXmatch.com",
+                }
+            },
+        }
+    }

@@ -157,12 +157,11 @@ class TestMusixmatch:
         request = self.musixmatch.track_snippet_get(12345)
         assert track_snippet == request
 
-    @pytest.mark.skip("Refactor test")
-    def test_track_subtitle_get(self):
-        self.assertEqual(
-            self.musixmatch.track_subtitle_get(14201829)["message"]["body"],
-            "",
-        )
+    def test_track_subtitle_get(self, requests_mock, track_subtitle_get: dict) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/track.subtitle.get?track_id=14201829"
+        requests_mock.get(url=url, json=track_subtitle_get)
+        request = self.musixmatch.track_subtitle_get(14201829)
+        assert track_subtitle_get == request
 
     def test_track_richsync_get(self, requests_mock, track_richsync_get: dict) -> None:
         url = "https://api.musixmatch.com/ws/1.1/track.richsync.get?track_id=114837357"
