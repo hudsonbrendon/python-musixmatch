@@ -155,3 +155,26 @@ def track_subtitle_get() -> dict:
             },
         }
     }
+
+
+@pytest.fixture
+def matcher_lyrics_get() -> dict:
+    return {
+        "message": {
+            "header": {"status_code": 200, "execute_time": 0.19601988792419},
+            "body": {
+                "lyrics": {
+                    "lyrics_id": 6471198,
+                    "restricted": 0,
+                    "instrumental": 0,
+                    "lyrics_body": "When I walk on by, girls be looking like damn he fly\r\nI pay to the beat, walking on the street with in my new lafreak, yeah",
+                    "lyrics_language": "en",
+                    "script_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/5RIyfJ3c",
+                    "pixel_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/5RIyfJ/",
+                    "html_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/5RIyfJ3cC39",
+                    "lyrics_copyright": "Lyrics powered by www.musiXmatch.com",
+                    "updated_time": "2011-06-30T13:31:20Z",
+                }
+            },
+        }
+    }
