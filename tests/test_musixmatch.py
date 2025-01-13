@@ -170,7 +170,7 @@ class TestMusixmatch:
         assert track_richsync_get == request
 
     def test_matcher_lyrics_get(self, requests_mock, matcher_lyrics_get) -> None:
-        url = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=Let%20Me%20Love%20You&q_artist=justinbieber"
+        url = "http://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=Let%20Me%20Love%20You&q_artist=justinbieber"
         requests_mock.get(url=url, json=matcher_lyrics_get)
         request = self.musixmatch.matcher_lyrics_get("Let Me Love You", "justinbieber")
         assert matcher_lyrics_get == request
