@@ -169,42 +169,11 @@ class TestMusixmatch:
         request = self.musixmatch.track_richsync_get(114837357)
         assert track_richsync_get == request
 
-    @pytest.mark.skip("Refactor test")
-    def test_track_lyrics_post(self):
-        self.assertEqual(
-            self.musixmatch.track_lyrics_post(1471157, "test")["message"]["header"][
-                "status_code"
-            ],
-            200,
-        )
-        self.assertEqual(
-            self.musixmatch.track_lyrics_post(1471157, "test")["message"]["body"],
-            "",
-        )
-
-    @pytest.mark.skip("Refactor test")
-    def test_track_lyrics_feedback_post(self):
-        self.assertEqual(
-            self.musixmatch.track_lyrics_post(1471157, 4193713, "wrong_verses")[
-                "message"
-            ]["body"],
-            "",
-        )
-
-    @pytest.mark.skip("Refactor test")
-    def test_matcher_lyrics_get(self):
-        self.assertEqual(
-            self.musixmatch.matcher_lyrics_get("Sexy and I know it", "LMFAO")[
-                "message"
-            ]["body"]["lyrics"]["lyrics_language_description"],
-            "English",
-        )
-        self.assertEqual(
-            self.musixmatch.matcher_lyrics_get("Sexy and I know it", "LMFAO")[
-                "message"
-            ]["body"]["lyrics"]["lyrics_language"],
-            "en",
-        )
+    def test_matcher_lyrics_get(self, requests_mock, matcher_lyrics_get) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=Let%20Me%20Love%20You&q_artist=justinbieber"
+        requests_mock.get(url=url, json=matcher_lyrics_get)
+        request = self.musixmatch.matcher_lyrics_get("Let Me Love You", "justinbieber")
+        assert matcher_lyrics_get == request
 
     @pytest.mark.skip("Refactor test")
     def test_matcher_track_get(self):
