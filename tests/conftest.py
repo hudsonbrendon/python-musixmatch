@@ -178,3 +178,13 @@ def matcher_lyrics_get() -> dict:
             },
         }
     }
+
+
+@pytest.fixture
+def matcher_track_get() -> dict:
+    return {
+        "message": {
+            "header": {"status_code": 200, "execute_time": 0.00136, "confidence": 949},
+            "body": {"track": "track'"},
+        }
+    }
