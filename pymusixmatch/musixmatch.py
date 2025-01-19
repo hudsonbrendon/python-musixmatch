@@ -350,22 +350,24 @@ class Musixmatch(object):
 
         Parameters:
 
-        q_track - The song title
-        q_artist - The song artist
-        track_isrc - If you have an available isrc id in your catalogue
+        q_track (str): The song title
+        q_artist (str): The song artist
+        track_isrc (str): If you have an available isrc id in your catalogue
         you can query using this id only (optional)
         track_isrc - If you have an available musicbrainz recording id
         """
         data = self._request(
             self._get_url(
-                "matcher.lyrics.get?" "q_track={}&q_artist={}&track_isrc={}".format(
+                "matcher.lyrics.get?q_track={}&q_artist={}&track_isrc={}".format(
                     q_track, q_artist, track_isrc
                 ),
             ),
         )
         return data
 
-    def matcher_track_get(self, q_track, q_artist, _format="json"):
+    def matcher_track_get(
+        self, q_track: str, q_artist: str, q_album: Optional[str] = None
+    ) -> dict:
         """Match your song against our database.
 
         In some cases you already have some informations
@@ -381,11 +383,17 @@ class Musixmatch(object):
         details, and you’ll get instant benefits for your application
         without changing a row in your code, while we take care of
         improving the implementation behind. Cool, uh?
+
+        Parameters:
+
+        q_track (str): The song title.
+        q_artist (str): The song artist.
+        q_album (str): The song album.
         """
         data = self._request(
             self._get_url(
-                "matcher.track.get?" "q_track={}&q_artist={}" "&format={}".format(
-                    q_track, q_artist, _format
+                "matcher.track.get?q_track={}&q_artist={}&q_album={}".format(
+                    q_track, q_artist, q_album
                 ),
             ),
         )
@@ -446,7 +454,7 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "artist.get?artist_id={}" "&artist_mbid={}&format={}".format(
+                "artist.get?artist_id={}&artist_mbid={}&format={}".format(
                     artist_id, artist_mbid, _format
                 ),
             ),
@@ -634,7 +642,7 @@ class Musixmatch(object):
         """
         data = self._request(
             self._get_url(
-                "tracking.url.get?" "domain={}&format={}".format(domain, _format),
+                "tracking.url.get?domain={}&format={}".format(domain, _format),
             ),
         )
         return data
@@ -669,6 +677,6 @@ class Musixmatch(object):
         format - Decide the output type json or xml (default json)
         """
         data = self._request(
-            self._get_url("music.genres.get?" "format={}".format(_format)),
+            self._get_url("music.genres.get?format={}".format(_format)),
         )
         return data

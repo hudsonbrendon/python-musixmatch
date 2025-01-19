@@ -12,7 +12,7 @@ class TestMusixmatch:
     def test_get_url(self) -> None:
         assert (
             self.musixmatch._get_url(
-                "chart.artists.get?" "page=1&page_size=1&country=us" "&format=json",
+                "chart.artists.get?page=1&page_size=1&country=us&format=json",
             )
             == f"{self.url}chart.artists.get?page=1&page_size=1&country=us&format=json&apikey=test"
         )
@@ -175,20 +175,11 @@ class TestMusixmatch:
         request = self.musixmatch.matcher_lyrics_get("Let Me Love You", "justinbieber")
         assert matcher_lyrics_get == request
 
-    @pytest.mark.skip("Refactor test")
-    def test_matcher_track_get(self):
-        self.assertEqual(
-            self.musixmatch.matcher_track_get("Lose Yourself (soundtrack)", "Eminem")[
-                "message"
-            ]["body"]["track"]["track_name"],
-            "Lose Yourself - " "Soundtrack Version" " (Explicit)",
-        )
-        self.assertEqual(
-            self.musixmatch.matcher_track_get("Lose Yourself (soundtrack)", "Eminem")[
-                "message"
-            ]["body"]["track"]["album_name"],
-            "Curtain Call",
-        )
+    def test_matcher_track_get(self, requests_mock, matcher_track_get: dict) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/matcher.track.get?q_artist=justinbieber&q_track=Let%20Me%20Love%20You&"
+        requests_mock.get(url=url, json=matcher_track_get)
+        request = self.musixmatch.matcher_track_get("Let Me Love You", "justinbieber")
+        assert matcher_track_get == request
 
     @pytest.mark.skip("Refactor test")
     def test_matcher_subtitle_get(self):
