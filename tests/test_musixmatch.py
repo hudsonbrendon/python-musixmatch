@@ -181,14 +181,15 @@ class TestMusixmatch:
         request = self.musixmatch.matcher_track_get("Let Me Love You", "justinbieber")
         assert matcher_track_get == request
 
-    @pytest.mark.skip("Refactor test")
-    def test_matcher_subtitle_get(self):
-        self.assertEqual(
-            self.musixmatch.matcher_subtitle_get("Sexy and I know it", "LMFAO", 200, 3)[
-                "message"
-            ]["body"],
-            "",
+    def test_matcher_subtitle_get(
+        self, requests_mock, matcher_subtitle_get: str
+    ) -> None:
+        url = "https://api.musixmatch.com/ws/1.1/matcher.subtitle.get?q_artist=justinbieber&q_track=Let%20Me%20Love%20You&"
+        requests_mock.get(url=url, text=matcher_subtitle_get)
+        request = self.musixmatch.matcher_subtitle_get(
+            "Let Me Love You", "justinbieber", 10, 10
         )
+        assert matcher_subtitle_get == request
 
     @pytest.mark.skip("Refactor test")
     def test_artist_get(self):

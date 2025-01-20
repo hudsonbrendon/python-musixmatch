@@ -188,3 +188,33 @@ def matcher_track_get() -> dict:
             "body": {"track": "track'"},
         }
     }
+
+
+@pytest.fixture
+def matcher_subtitle_get() -> str:
+    return """
+    <?xml version="1.0" encoding="utf-8"?>
+    <message>
+    <header>
+        <status_code>200</status_code>
+        <execute_time>0.064241886138916</execute_time>
+    </header>
+    <body>
+        <subtitle>
+        <subtitle_id>28141</subtitle_id>
+        <restricted>0</restricted>
+        <subtitle_body>[0:16.12] When I walk on by, girls be looking like damn he fly
+    [0:19.69] I pay to the beat, walking on the street with in my new lafreak, yeah
+    [0:23.48] This is how I roll, animal print, pants out control,
+    ... </subtitle_body>
+        <subtitle_length>199</subtitle_length>
+        <subtitle_language>en</subtitle_language>
+        <script_tracking_url>http://tracking.musixmatch.com/t1.0/5RIyfxxrQ==/</script_tracking_url>
+        <pixel_tracking_url>http://tracking.musixmatch.com/t1.0/5RIyxx=/</pixel_tracking_url>
+
+        <lyrics_copyright/>
+        <updated_time>2012-04-01T21:53:11Z</updated_time>
+        </subtitle>
+    </body>
+    </message>
+    """
