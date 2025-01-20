@@ -37,7 +37,7 @@ class Musixmatch(object):
         """
         return self.__api_key
 
-    def _request(self, url: str) -> dict:
+    def _request(self, url: str, format: Format = Format.JSON) -> dict:
         """Get the request.
 
         Args:
@@ -47,6 +47,8 @@ class Musixmatch(object):
             dict: The request.
         """
         request = requests.get(url)
+        if format == Format.XML:
+            return request.text
         return request.json()
 
     def _set_page_size(self, page_size: int) -> int:
@@ -366,7 +368,7 @@ class Musixmatch(object):
         return data
 
     def matcher_track_get(
-        self, q_track: str, q_artist: str, q_album: Optional[str] = None
+        self, q_track: str, q_artist: str, q_album: Optional[str] = ""
     ) -> dict:
         """Match your song against our database.
 
@@ -401,12 +403,11 @@ class Musixmatch(object):
 
     def matcher_subtitle_get(
         self,
-        q_track,
-        q_artist,
-        f_subtitle_length,
-        f_subtitle_length_max_deviation,
-        track_isrc=None,
-        _format="json",
+        q_track: str,
+        q_artist: str,
+        f_subtitle_length: int,
+        f_subtitle_length_max_deviation: int,
+        track_isrc: Optional[str] = "",
     ):
         """Get the subtitles for a song given his title,artist and duration.
 
@@ -415,14 +416,13 @@ class Musixmatch(object):
 
         Parameters:
 
-        q_track - The song title.
-        q_artist - The song artist.
-        f_subtitle_length - Filter by subtitle length in seconds.
-        f_subtitle_length_max_deviation - Max deviation for a subtitle
+        q_track (str): The song title.
+        q_artist (str): The song artist.
+        f_subtitle_length (int): Filter by subtitle length in seconds.
+        f_subtitle_length_max_deviation (int): Max deviation for a subtitle
         length in seconds.
-        track_isrc - If you have an available isrc id in your catalogue
+        track_isrc (str): If you have an available isrc id in your catalogue
         you can query using this id only (optional).
-        format - Decide the output type json or xml (default json).
 
         Note: This method requires a commercial plan.
         """
@@ -431,15 +431,15 @@ class Musixmatch(object):
                 "matcher.subtitle.get?q_track={}"
                 "&q_artist={}&f_subtitle_length={}"
                 "&f_subtitle_length_max_deviation={}"
-                "&track_isrc={}&format={}".format(
+                "&track_isrc={}".format(
                     q_track,
                     q_artist,
                     f_subtitle_length,
                     f_subtitle_length_max_deviation,
                     track_isrc,
-                    _format,
                 ),
             ),
+            format=Format.XML,
         )
         return data
 
